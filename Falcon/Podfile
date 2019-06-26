@@ -1,15 +1,37 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
+
+def basic_dependency
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'CocoaLumberjack/Swift', '~> 3.5.0'
+  pod 'Alamofire', '~> 4.7.3'
+  pod 'ObjectMapper', '~> 3.1'
+  pod 'AlamofireObjectMapper', '~> 5.0'
+  pod 'SDWebImage', '5.0.0-beta3'
+end
+
+def ui_dependency
+end
+
+def extension_dependency
+  pod 'SwifterSwift', '~> 5.0.0'
+  pod 'Then', '~> 2.5.0'
+end
+
+def debug_dependency
+end
 
 target 'Falcon' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Falcon
+  basic_dependency
+  ui_dependency
+  extension_dependency
+  debug_dependency
 
   target 'FalconTests' do
     inherit! :search_paths
-    # Pods for testing
+
+    pod 'Nimble', '~> 8.0.0'
   end
 
 end

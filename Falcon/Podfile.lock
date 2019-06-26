@@ -1,3 +1,72 @@
-PODFILE CHECKSUM: 8a07d91b5fdbf2350dc762247ccd694dc4fd8898
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - CocoaLumberjack/Core (3.5.3)
+  - CocoaLumberjack/Swift (3.5.3):
+    - CocoaLumberjack/Core
+  - Nimble (8.0.2)
+  - ObjectMapper (3.5.0)
+  - SDWebImage (5.0.0-beta3):
+    - SDWebImage/Core (= 5.0.0-beta3)
+  - SDWebImage/Core (5.0.0-beta3)
+  - SnapKit (5.0.0)
+  - SwifterSwift (5.0.0):
+    - SwifterSwift/AppKit (= 5.0.0)
+    - SwifterSwift/CoreGraphics (= 5.0.0)
+    - SwifterSwift/CoreLocation (= 5.0.0)
+    - SwifterSwift/Dispatch (= 5.0.0)
+    - SwifterSwift/Foundation (= 5.0.0)
+    - SwifterSwift/MapKit (= 5.0.0)
+    - SwifterSwift/SpriteKit (= 5.0.0)
+    - SwifterSwift/SwiftStdlib (= 5.0.0)
+    - SwifterSwift/UIKit (= 5.0.0)
+  - SwifterSwift/AppKit (5.0.0)
+  - SwifterSwift/CoreGraphics (5.0.0)
+  - SwifterSwift/CoreLocation (5.0.0)
+  - SwifterSwift/Dispatch (5.0.0)
+  - SwifterSwift/Foundation (5.0.0)
+  - SwifterSwift/MapKit (5.0.0)
+  - SwifterSwift/SpriteKit (5.0.0)
+  - SwifterSwift/SwiftStdlib (5.0.0)
+  - SwifterSwift/UIKit (5.0.0)
+  - Then (2.5.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7.3)
+  - AlamofireObjectMapper (~> 5.0)
+  - CocoaLumberjack/Swift (~> 3.5.0)
+  - Nimble (~> 8.0.0)
+  - ObjectMapper (~> 3.1)
+  - SDWebImage (= 5.0.0-beta3)
+  - SnapKit (~> 5.0.0)
+  - SwifterSwift (~> 5.0.0)
+  - Then (~> 2.5.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - CocoaLumberjack
+    - Nimble
+    - ObjectMapper
+    - SDWebImage
+    - SnapKit
+    - SwifterSwift
+    - Then
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
+  ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
+  SDWebImage: e52654ceef9fdc19f4c612d64a5b6d3f05dd81a4
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
+  Then: 0157115e883545c77967b452fe74a1d25fb796e1
+
+PODFILE CHECKSUM: aefb3f88f62d3b5e5f7f8aafb559cc2c866aea6a
 
 COCOAPODS: 1.7.2

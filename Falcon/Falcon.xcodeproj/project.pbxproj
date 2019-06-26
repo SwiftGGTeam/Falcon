@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		848EB7F922C1B7E300E4C549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7F822C1B7E300E4C549 /* Assets.xcassets */; };
 		848EB7FC22C1B7E300E4C549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7FA22C1B7E300E4C549 /* LaunchScreen.storyboard */; };
 		848EB80722C1B7E300E4C549 /* FalconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB80622C1B7E300E4C549 /* FalconTests.swift */; };
+		848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81622C2F1E100E4C549 /* FalcViewModel.swift */; };
+		848EB81922C2F27000E4C549 /* FalcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81822C2F27000E4C549 /* FalcView.swift */; };
 		A3BAB3C2190F5029F705C64F /* Pods_Falcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		848EB80222C1B7E300E4C549 /* FalconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FalconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848EB80622C1B7E300E4C549 /* FalconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalconTests.swift; sourceTree = "<group>"; };
 		848EB80822C1B7E300E4C549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848EB81622C2F1E100E4C549 /* FalcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcViewModel.swift; sourceTree = "<group>"; };
+		848EB81822C2F27000E4C549 /* FalcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcView.swift; sourceTree = "<group>"; };
 		8A2913FDB89468DEF16DB509 /* Pods-Falcon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Falcon.debug.xcconfig"; path = "Target Support Files/Pods-Falcon/Pods-Falcon.debug.xcconfig"; sourceTree = "<group>"; };
 		A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.release.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.debug.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,9 +102,9 @@
 		848EB7F022C1B7E200E4C549 /* Falcon */ = {
 			isa = PBXGroup;
 			children = (
-				848EB7F122C1B7E200E4C549 /* AppDelegate.swift */,
-				848EB7F322C1B7E200E4C549 /* ViewController.swift */,
-				848EB7F522C1B7E200E4C549 /* Main.storyboard */,
+				848EB81422C2F0C900E4C549 /* Core */,
+				848EB81322C2F0B900E4C549 /* Config */,
+				848EB81222C2F0AC00E4C549 /* Module */,
 				848EB7F822C1B7E300E4C549 /* Assets.xcassets */,
 				848EB7FA22C1B7E300E4C549 /* LaunchScreen.storyboard */,
 				848EB7FD22C1B7E300E4C549 /* Info.plist */,
@@ -117,6 +121,56 @@
 			path = FalconTests;
 			sourceTree = "<group>";
 		};
+		848EB81222C2F0AC00E4C549 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				848EB81B22C2FAEE00E4C549 /* Tab */,
+				848EB81A22C2FAE100E4C549 /* Artical */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		848EB81322C2F0B900E4C549 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				848EB7F122C1B7E200E4C549 /* AppDelegate.swift */,
+				848EB7F522C1B7E200E4C549 /* Main.storyboard */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		848EB81422C2F0C900E4C549 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				848EB81522C2F0DA00E4C549 /* Arch */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		848EB81522C2F0DA00E4C549 /* Arch */ = {
+			isa = PBXGroup;
+			children = (
+				848EB81622C2F1E100E4C549 /* FalcViewModel.swift */,
+				848EB81822C2F27000E4C549 /* FalcView.swift */,
+			);
+			path = Arch;
+			sourceTree = "<group>";
+		};
+		848EB81A22C2FAE100E4C549 /* Artical */ = {
+			isa = PBXGroup;
+			children = (
+				848EB7F322C1B7E200E4C549 /* ViewController.swift */,
+			);
+			path = Artical;
+			sourceTree = "<group>";
+		};
+		848EB81B22C2FAEE00E4C549 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		CC92B34EB387259D5C5E58D1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +179,6 @@
 				A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */,
 				A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +193,7 @@
 				848EB7EA22C1B7E200E4C549 /* Sources */,
 				848EB7EB22C1B7E200E4C549 /* Frameworks */,
 				848EB7EC22C1B7E200E4C549 /* Resources */,
+				649BA9BA1E15D0149E63067F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +212,7 @@
 				848EB7FE22C1B7E300E4C549 /* Sources */,
 				848EB7FF22C1B7E300E4C549 /* Frameworks */,
 				848EB80022C1B7E300E4C549 /* Resources */,
+				8168131984EDD625E9DCFC46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,6 +327,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		649BA9BA1E15D0149E63067F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Falcon/Pods-Falcon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Falcon/Pods-Falcon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Falcon/Pods-Falcon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8168131984EDD625E9DCFC46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FalconTests/Pods-FalconTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FalconTests/Pods-FalconTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FalconTests/Pods-FalconTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,6 +370,8 @@
 			files = (
 				848EB7F422C1B7E200E4C549 /* ViewController.swift in Sources */,
 				848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */,
+				848EB81922C2F27000E4C549 /* FalcView.swift in Sources */,
+				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

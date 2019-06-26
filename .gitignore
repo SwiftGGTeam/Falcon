@@ -2,6 +2,7 @@
 build/
 DerivedData
 build.xcarchive
+xcshareddata/
 
 ## Various settings
 *.pbxuser
