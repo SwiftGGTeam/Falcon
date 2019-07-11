@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		355655A12E383E70E02E3069 /* Pods_FalconTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */; };
 		848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB7F122C1B7E200E4C549 /* AppDelegate.swift */; };
-		848EB7F422C1B7E200E4C549 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB7F322C1B7E200E4C549 /* ViewController.swift */; };
 		848EB7F722C1B7E200E4C549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7F522C1B7E200E4C549 /* Main.storyboard */; };
 		848EB7F922C1B7E300E4C549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7F822C1B7E300E4C549 /* Assets.xcassets */; };
 		848EB7FC22C1B7E300E4C549 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7FA22C1B7E300E4C549 /* LaunchScreen.storyboard */; };
 		848EB80722C1B7E300E4C549 /* FalconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB80622C1B7E300E4C549 /* FalconTests.swift */; };
 		848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81622C2F1E100E4C549 /* FalcViewModel.swift */; };
 		848EB81922C2F27000E4C549 /* FalcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81822C2F27000E4C549 /* FalcView.swift */; };
+		848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81C22C3C69200E4C549 /* HomeViewController.swift */; };
+		848EB81F22C3CCD500E4C549 /* FalcTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81E22C3CCD500E4C549 /* FalcTabViewController.swift */; };
 		A3BAB3C2190F5029F705C64F /* Pods_Falcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +35,6 @@
 		3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FalconTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		848EB7EE22C1B7E200E4C549 /* Falcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Falcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848EB7F122C1B7E200E4C549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		848EB7F322C1B7E200E4C549 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		848EB7F622C1B7E200E4C549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		848EB7F822C1B7E300E4C549 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		848EB7FB22C1B7E300E4C549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		848EB80822C1B7E300E4C549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848EB81622C2F1E100E4C549 /* FalcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcViewModel.swift; sourceTree = "<group>"; };
 		848EB81822C2F27000E4C549 /* FalcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcView.swift; sourceTree = "<group>"; };
+		848EB81C22C3C69200E4C549 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		848EB81E22C3CCD500E4C549 /* FalcTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcTabViewController.swift; sourceTree = "<group>"; };
 		8A2913FDB89468DEF16DB509 /* Pods-Falcon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Falcon.debug.xcconfig"; path = "Target Support Files/Pods-Falcon/Pods-Falcon.debug.xcconfig"; sourceTree = "<group>"; };
 		A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.release.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.debug.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				848EB81B22C2FAEE00E4C549 /* Tab */,
-				848EB81A22C2FAE100E4C549 /* Artical */,
+				848EB81A22C2FAE100E4C549 /* Home */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -156,17 +158,18 @@
 			path = Arch;
 			sourceTree = "<group>";
 		};
-		848EB81A22C2FAE100E4C549 /* Artical */ = {
+		848EB81A22C2FAE100E4C549 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				848EB7F322C1B7E200E4C549 /* ViewController.swift */,
+				848EB81C22C3C69200E4C549 /* HomeViewController.swift */,
 			);
-			path = Artical;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		848EB81B22C2FAEE00E4C549 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				848EB81E22C3CCD500E4C549 /* FalcTabViewController.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -368,9 +371,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848EB7F422C1B7E200E4C549 /* ViewController.swift in Sources */,
 				848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */,
+				848EB81F22C3CCD500E4C549 /* FalcTabViewController.swift in Sources */,
 				848EB81922C2F27000E4C549 /* FalcView.swift in Sources */,
+				848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */,
 				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

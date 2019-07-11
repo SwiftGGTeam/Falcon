@@ -10,6 +10,7 @@ def basic_dependency
 end
 
 def ui_dependency
+#  pod 'CYLTabBarController', '~> 1.28.0'
 end
 
 def extension_dependency
