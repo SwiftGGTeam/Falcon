@@ -51,6 +51,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 }
 ```
 
+## Deploy The Development Environment
+
+```bash
+$ git clone git@github.com:SwiftGGTeam/Falcon.git && cd Falcon
+$ bundle install
+$ cd Falcon
+$ bundle exec pod install --repo-update
+```
+
 ## UI
 
 🖼 [zeplin](https://zpl.io/aNmPNrD)
