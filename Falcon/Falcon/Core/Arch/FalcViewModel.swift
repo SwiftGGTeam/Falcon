@@ -43,6 +43,11 @@ public class FalcViewModel<T>: NSObject, ViewModel {
     }
     public var delegate: BasicViewDelegate?
     
+    public override init() {
+        super.init()
+        initialDatas()
+    }
+    
     open func initialDatas() {}
     open func updateDatas() {}
 }

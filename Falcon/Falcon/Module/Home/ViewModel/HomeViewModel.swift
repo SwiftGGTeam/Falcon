@@ -8,4 +8,11 @@
 
 import UIKit
 
-class HomeViewModel: FalcViewModel<NSObject> {}
+class HomeViewModel: FalcViewModel<ViewModel> {
+    
+    override func initialDatas() {
+        super.initialDatas()
+        datas.append(HomeItemTableViewCellModel())
+        datas.append(HomeItemTableViewCellModel())
+    }
+}

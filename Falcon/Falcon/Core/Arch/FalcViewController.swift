@@ -40,6 +40,7 @@ public class FalcViewController<T: ViewModel>: UIViewController, View {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        initialDatas()
         initialViews()
         initialLayouts()
     }
@@ -47,8 +48,10 @@ public class FalcViewController<T: ViewModel>: UIViewController, View {
     open func initialViews() {
         view.backgroundColor = .falcBackgroundColor
     }
-    open func updateViews() {}
     open func initialLayouts() {}
+    open func initialDatas() {}
+        
+    open func updateViews() {}
     open func updateLayouts() {}
 }
 

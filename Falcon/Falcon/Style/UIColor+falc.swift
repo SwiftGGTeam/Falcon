@@ -12,7 +12,26 @@ extension UIColor {
     /// 背景色
     static var falcBackgroundColor: UIColor {
         get {
-            return UIColor(red: 216 / 255, green: 216 / 255, blue: 216 / 255, alpha: 1)
+            return UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 1)
+        }
+    }
+    
+    /// 标题颜色
+    static var falcListTitleColor: UIColor {
+        get {
+            return UIColor(red: 62 / 255, green: 62 / 255, blue: 62 / 255, alpha: 1)
+        }
+    }
+    
+    static var falcListDescColor: UIColor {
+        get {
+            return UIColor(red: 102 / 255, green: 102 / 255, blue: 102 / 255, alpha: 1)
+        }
+    }
+    
+    static var falcSwiftOrangeColor: UIColor {
+        get {
+            return UIColor(red: 245 / 255, green: 117 / 255, blue: 85 / 255, alpha: 1)
         }
     }
 }

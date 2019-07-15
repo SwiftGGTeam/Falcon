@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SwifterSwift
 
 class HomeViewController: FalcViewController<HomeViewModel> {
     
@@ -23,8 +24,14 @@ class HomeViewController: FalcViewController<HomeViewModel> {
         tableView.keyboardDismissMode = .onDrag
         tableView.sectionFooterHeight = 0.0
         tableView.sectionHeaderHeight = 38
+        tableView.register(cellWithClass: HomeItemTableViewCell.self)
         return tableView
     }()
+    
+    override func initialDatas() {
+        super.initialDatas()
+        viewModel = HomeViewModel()
+    }
 
     override func initialViews() {
         super.initialViews()
@@ -43,11 +50,16 @@ class HomeViewController: FalcViewController<HomeViewModel> {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel {
+            let cell = tableView.dequeueReusableCell(withClass: HomeItemTableViewCell.self)
+            cell.selectionStyle = .none
+            return cell
+        }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.datas.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
