@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		355655A12E383E70E02E3069 /* Pods_FalconTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */; };
+		84506BF722DC16220069717E /* FalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF622DC16220069717E /* FalcViewController.swift */; };
+		84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF922DC16D90069717E /* UIColor+falc.swift */; };
+		84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BFC22DC17560069717E /* HomeViewModel.swift */; };
+		84506C0022DC1AAF0069717E /* HomeItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BFF22DC1AAF0069717E /* HomeItemTableViewCell.swift */; };
 		848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB7F122C1B7E200E4C549 /* AppDelegate.swift */; };
 		848EB7F722C1B7E200E4C549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7F522C1B7E200E4C549 /* Main.storyboard */; };
 		848EB7F922C1B7E300E4C549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848EB7F822C1B7E300E4C549 /* Assets.xcassets */; };
@@ -33,6 +37,10 @@
 /* Begin PBXFileReference section */
 		12229BD8609C81FB89672E66 /* Pods-Falcon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Falcon.release.xcconfig"; path = "Target Support Files/Pods-Falcon/Pods-Falcon.release.xcconfig"; sourceTree = "<group>"; };
 		3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FalconTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84506BF622DC16220069717E /* FalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcViewController.swift; sourceTree = "<group>"; };
+		84506BF922DC16D90069717E /* UIColor+falc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+falc.swift"; sourceTree = "<group>"; };
+		84506BFC22DC17560069717E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		84506BFF22DC1AAF0069717E /* HomeItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemTableViewCell.swift; sourceTree = "<group>"; };
 		848EB7EE22C1B7E200E4C549 /* Falcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Falcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848EB7F122C1B7E200E4C549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848EB7F622C1B7E200E4C549 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +89,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84506BF522DC15BD0069717E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				848EB81C22C3C69200E4C549 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84506BF822DC16CA0069717E /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				84506BF922DC16D90069717E /* UIColor+falc.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		84506BFB22DC17470069717E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84506BFC22DC17560069717E /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84506BFE22DC19CC0069717E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84506BFF22DC1AAF0069717E /* HomeItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		848EB7E522C1B7E200E4C549 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +144,7 @@
 		848EB7F022C1B7E200E4C549 /* Falcon */ = {
 			isa = PBXGroup;
 			children = (
+				84506BF822DC16CA0069717E /* Style */,
 				848EB81422C2F0C900E4C549 /* Core */,
 				848EB81322C2F0B900E4C549 /* Config */,
 				848EB81222C2F0AC00E4C549 /* Module */,
@@ -154,6 +195,7 @@
 			children = (
 				848EB81622C2F1E100E4C549 /* FalcViewModel.swift */,
 				848EB81822C2F27000E4C549 /* FalcView.swift */,
+				84506BF622DC16220069717E /* FalcViewController.swift */,
 			);
 			path = Arch;
 			sourceTree = "<group>";
@@ -161,7 +203,9 @@
 		848EB81A22C2FAE100E4C549 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				848EB81C22C3C69200E4C549 /* HomeViewController.swift */,
+				84506BFE22DC19CC0069717E /* View */,
+				84506BFB22DC17470069717E /* ViewModel */,
+				84506BF522DC15BD0069717E /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -373,8 +417,12 @@
 			files = (
 				848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */,
 				848EB81F22C3CCD500E4C549 /* FalcTabViewController.swift in Sources */,
+				84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */,
+				84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */,
+				84506C0022DC1AAF0069717E /* HomeItemTableViewCell.swift in Sources */,
 				848EB81922C2F27000E4C549 /* FalcView.swift in Sources */,
 				848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */,
+				84506BF722DC16220069717E /* FalcViewController.swift in Sources */,
 				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

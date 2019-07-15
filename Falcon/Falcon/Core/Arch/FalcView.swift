@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// View 抽象
 public protocol View {
     associatedtype ViewModel: BasicViewModel
     
@@ -20,6 +21,7 @@ public protocol View {
     func updateLayouts()
 }
 
+// Falc 实例
 public class FalcView<T: ViewModel>: UIView, View {
     public typealias ViewModel = T
     
@@ -54,6 +56,7 @@ extension FalcView: BasicViewDelegate {
     open func modelChanged(_ models: [Any]) {}
 }
 
+// FalcCell 实例
 public class FalcTableViewCell<T: ViewModel>: UITableViewCell, View {
     public typealias ViewModel = T
     
@@ -80,3 +83,5 @@ public class FalcTableViewCell<T: ViewModel>: UITableViewCell, View {
     open func initialLayouts() {}
     open func updateLayouts() {}
 }
+
+
