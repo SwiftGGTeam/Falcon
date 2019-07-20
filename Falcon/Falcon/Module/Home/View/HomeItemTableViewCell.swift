@@ -90,9 +90,20 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
             make.height.equalTo(2)
         }
     }
+    
+    override func updateViews() {
+        super.updateViews()
+        guard let viewModel = viewModel else { return }
+        titleLabel.text = viewModel.titleText
+    }
 }
 
 
 class HomeItemTableViewCellModel: FalcViewModel<NSObject> {
+    public var titleText: String = ""
+    public var descText: String = ""
+    public var tagText: String = ""
+    public var authorText: String = ""
+    
     
 }

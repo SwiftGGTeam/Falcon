@@ -53,6 +53,7 @@ extension HomeViewController: UITableViewDataSource {
         if let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel {
             let cell = tableView.dequeueReusableCell(withClass: HomeItemTableViewCell.self)
             cell.selectionStyle = .none
+            cell.viewModel = vm
             return cell
         }
         return UITableViewCell()
