@@ -18,7 +18,7 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     private var titleLabel: UILabel = {
         var label = UILabel().then {
             $0.text = "在 iOS 11 中使用 Core Bluetooth"
-            $0.textColor = UIColor.falcListTitleColor
+            $0.textColor = UIColor.sgBlackColor
             $0.font = UIFont.falcFont(size: 16, thick: .semibold)
         }
         return label
@@ -28,14 +28,14 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
         var label = UILabel()
         label.text = "现在地球上有数十亿的无线通讯设备。在这篇教程中，我们将聚焦 IoT 其中的一部分：蓝牙。"
         label.numberOfLines = 0
-        label.textColor = UIColor.falcListDescColor
+        label.textColor = UIColor.sgDarkGrayColor
         label.font = UIFont.falcFont(size: 13, thick: .medium)
         return label
     }()
     
     lazy private var tagButton: UIButton = {
         var button = UIButton(type: .custom)
-        button.backgroundColor = UIColor.falcSwiftOrangeColor
+        button.backgroundColor = UIColor.sgMainTintColor
         button.setTitle("APP CODA", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.falcFont(size: 10, thick: .semibold)
