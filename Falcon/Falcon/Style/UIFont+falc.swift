@@ -42,4 +42,9 @@ extension UIFont {
         return UIFont.systemFont(ofSize: 12.0, weight: .medium)
     }
     
+    class var sgNaviTitle: UIFont {
+        return UIFont.systemFont(ofSize: 18.0, weight: .bold)
+    }
+
+    
 }

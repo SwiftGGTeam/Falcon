@@ -39,5 +39,13 @@ extension UIColor {
     @nonobjc class var sgTabBarColor: UIColor {
         return UIColor(white: 1.0, alpha: 0.9)
     }
+    
+    @nonobjc class var sgNaviTitleBlackColor: UIColor {
+        return UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 55.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var sgBackgroundColor: UIColor {
+        return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+    }
 
 }

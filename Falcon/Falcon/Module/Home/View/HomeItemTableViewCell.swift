@@ -45,7 +45,7 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     
     private var lineView: UIView = {
         var view = UIView()
-        view.backgroundColor = UIColor.falcBackgroundColor
+        view.backgroundColor = UIColor.sgBackgroundColor
         return view
     }()
     
