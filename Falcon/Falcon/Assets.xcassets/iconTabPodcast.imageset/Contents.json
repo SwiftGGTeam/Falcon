@@ -2,18 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iconTabPodcast.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "iconTabPodcast@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "iconTabPodcast@3x.png",
-      "scale" : "3x"
+      "filename" : "iconTabPodcast.pdf"
     }
   ],
   "info" : {
