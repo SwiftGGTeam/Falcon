@@ -27,11 +27,11 @@ extension UIFont {
     }
     
     class var sgHeadline: UIFont {
-        return UIFont(name: "PingFangSC-Semibold", size: 16.0)!
+        return UIFont.systemFont(ofSize: 16.0, weight: .semibold)
     }
     
     class var sgCallout: UIFont {
-        return UIFont(name: "PingFangSC-Medium", size: 13.0)!
+        return UIFont.systemFont(ofSize: 13.0, weight: .medium)
     }
     
     class var sgSubhead: UIFont {
