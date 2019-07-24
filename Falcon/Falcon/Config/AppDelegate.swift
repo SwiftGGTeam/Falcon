@@ -15,7 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let falcTabBarController = FalcTabBarController()
+        falcTabBarController.setViewControllers(initControllers(), animated: true)
+        
+        self.window?.rootViewController = falcTabBarController
+        self.window?.makeKeyAndVisible()
+        
+        // Set appearance
+        UITabBar.appearance().backgroundColor = .sgTabBarColor
+        UITabBar.appearance().tintColor = .sgMainTintColor
+        // remove top line from tab bar
+        UITabBar.appearance().layer.borderWidth = 0.0
+        UITabBar.appearance().clipsToBounds = true
+        
+        UINavigationBar.appearance().barTintColor = .sgNaviColor
+        UINavigationBar.appearance().tintColor = .sgMainTintColor
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.sgNaviTitleBlackColor,
+                                                            .font : UIFont.sgNaviTitle]
+        UINavigationBar.appearance().shadowImage = UIImage()
+        
         return true
     }
 
@@ -40,7 +59,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    // MARK: Set FalcTabBarController
+    
+    func initControllers() -> [UINavigationController] {
+        // Articles
+        let articlesViewController = HomeViewController()
+        articlesViewController.navigationItem.title = "文章"
+        articlesViewController.tabBarItem.image = UIImage(named: "iconTabArticles")
+        articlesViewController.tabBarItem.selectedImage = UIImage(named: "Artboard")
+        let articlesNaviController = UINavigationController(rootViewController: articlesViewController)
+        
+        // Podcast
+        let podcastViewController = UIViewController()
+        podcastViewController.navigationItem.title = "GGTalk"
+        podcastViewController.tabBarItem.image = UIImage(named: "iconTabPodcast")
+        podcastViewController.tabBarItem.selectedImage = UIImage(named: "iconTabPodcastTapped")
+        podcastViewController.view.backgroundColor = .sgBackgroundColor
+        let podcastNaviController = UINavigationController(rootViewController: podcastViewController)
+        
+        // Events
+        let eventsViewController = UIViewController()
+        eventsViewController.navigationItem.title = "活动"
+        eventsViewController.tabBarItem.image = UIImage(named: "iconTabEvents")
+        eventsViewController.tabBarItem.selectedImage = UIImage(named: "iconTabEventsTapped")
+        eventsViewController.view.backgroundColor = .sgBackgroundColor
+        let eventsNaviController = UINavigationController(rootViewController: eventsViewController)
+        
+        // Shop
+        let shopViewController = UIViewController()
+        shopViewController.navigationItem.title = "商店"
+        shopViewController.tabBarItem.image = UIImage(named: "iconTabShop")
+        shopViewController.tabBarItem.selectedImage = UIImage(named: "iconTabShopTapped")
+        shopViewController.view.backgroundColor = .sgBackgroundColor
+        let shopNaviController = UINavigationController(rootViewController: shopViewController)
+        
+        let naviControllers = [articlesNaviController, podcastNaviController, eventsNaviController, shopNaviController]
+        
+        return naviControllers
+    }
 
 }
 

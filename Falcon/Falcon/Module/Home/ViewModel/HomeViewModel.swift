@@ -12,7 +12,7 @@ class HomeViewModel: FalcViewModel<ViewModel> {
     
     override func initialDatas() {
         super.initialDatas()
-        var cm = HomeItemTableViewCellModel()
+        let cm = HomeItemTableViewCellModel()
         cm.titleText = "SwiftGG 的第一篇文章"
         datas.append(cm)
         datas.append(HomeItemTableViewCellModel())

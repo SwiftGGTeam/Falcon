@@ -15,7 +15,7 @@ class HomeViewController: FalcViewController<HomeViewModel> {
 
     lazy private var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .sgBackgroundColor
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -25,6 +25,7 @@ class HomeViewController: FalcViewController<HomeViewModel> {
         tableView.sectionFooterHeight = 0.0
         tableView.sectionHeaderHeight = 38
         tableView.register(cellWithClass: HomeItemTableViewCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         return tableView
     }()
     

@@ -16,22 +16,36 @@ extension UIColor {
         }
     }
     
-    /// 标题颜色
-    static var falcListTitleColor: UIColor {
-        get {
-            return UIColor(red: 62 / 255, green: 62 / 255, blue: 62 / 255, alpha: 1)
-        }
+    @nonobjc class var sgMainTintColor: UIColor {
+        return UIColor(red: 245.0 / 255.0, green: 117.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0)
     }
     
-    static var falcListDescColor: UIColor {
-        get {
-            return UIColor(red: 102 / 255, green: 102 / 255, blue: 102 / 255, alpha: 1)
-        }
+    @nonobjc class var sgBlackColor: UIColor {
+        return UIColor(white: 62.0 / 255.0, alpha: 1.0)
     }
     
-    static var falcSwiftOrangeColor: UIColor {
-        get {
-            return UIColor(red: 245 / 255, green: 117 / 255, blue: 85 / 255, alpha: 1)
-        }
+    @nonobjc class var sgDarkGrayColor: UIColor {
+        return UIColor(white: 102.0 / 255.0, alpha: 1.0)
     }
+    
+    @nonobjc class var sgLightGrayColor: UIColor {
+        return UIColor(white: 180.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var sgNaviColor: UIColor {
+        return UIColor(white: 1.0, alpha: 0.68)
+    }
+    
+    @nonobjc class var sgTabBarColor: UIColor {
+        return UIColor(white: 1.0, alpha: 0.9)
+    }
+    
+    @nonobjc class var sgNaviTitleBlackColor: UIColor {
+        return UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 55.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var sgBackgroundColor: UIColor {
+        return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+    }
+
 }
