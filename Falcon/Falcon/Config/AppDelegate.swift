@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let eventsNaviController = UINavigationController(rootViewController: eventsViewController)
         
         // Shop
-        let shopViewController = UIViewController()
+        let shopViewController = ShopViewController()
         shopViewController.navigationItem.title = "商店"
         shopViewController.tabBarItem.image = UIImage(named: "iconTabShop")
         shopViewController.tabBarItem.selectedImage = UIImage(named: "iconTabShopTapped")
