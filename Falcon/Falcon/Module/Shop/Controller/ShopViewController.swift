@@ -44,7 +44,6 @@ class ShopViewController: FalcViewController<ShopViewModel> {
             make.edges.equalToSuperview()
         }
     }
-
 }
 
 extension ShopViewController: UITableViewDataSource {
