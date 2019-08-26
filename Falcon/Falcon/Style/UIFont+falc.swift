@@ -46,5 +46,8 @@ extension UIFont {
         return UIFont.systemFont(ofSize: 18.0, weight: .bold)
     }
 
-    
+    class var sgTitle1: UIFont {
+        return UIFont.systemFont(ofSize: 22.0, weight: .bold)
+    }
+
 }

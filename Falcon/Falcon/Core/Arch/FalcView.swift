@@ -85,3 +85,32 @@ public class FalcTableViewCell<T: ViewModel>: UITableViewCell, View {
 }
 
 
+// FalcCollectionViewCell 实例
+public class FalcCollectionViewCell<T: ViewModel>: UICollectionViewCell, View {
+    public typealias ViewModel = T
+    
+    public var viewModel: T? {
+        didSet {
+            updateViews()
+            updateLayouts()
+        }
+    }
+    
+    public override init(frame: CGRect) {
+        self.viewModel = nil
+        super.init(frame: frame)
+        initialViews()
+        initialLayouts()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    open func initialViews() {}
+    open func updateViews() {}
+    open func initialLayouts() {}
+    open func updateLayouts() {}
+}
+
+

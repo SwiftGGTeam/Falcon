@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let podcastNaviController = UINavigationController(rootViewController: podcastViewController)
         
         // Events
-        let eventsViewController = UIViewController()
+        let eventsViewController = EventViewController()
         eventsViewController.navigationItem.title = "活动"
         eventsViewController.tabBarItem.image = UIImage(named: "iconTabEvents")
         eventsViewController.tabBarItem.selectedImage = UIImage(named: "iconTabEventsTapped")
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let eventsNaviController = UINavigationController(rootViewController: eventsViewController)
         
         // Shop
-        let shopViewController = UIViewController()
+        let shopViewController = ShopViewController()
         shopViewController.navigationItem.title = "商店"
         shopViewController.tabBarItem.image = UIImage(named: "iconTabShop")
         shopViewController.tabBarItem.selectedImage = UIImage(named: "iconTabShopTapped")
