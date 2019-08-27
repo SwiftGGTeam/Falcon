@@ -12,10 +12,16 @@ import SwifterSwift
 
 class HomeViewController: FalcViewController<HomeViewModel> {
     
-
-    lazy private var tableView: UITableView = {
+    lazy private var refreshControl: UIRefreshControl = { [unowned self] in
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.tintColor = UIColor.sgMainTintColor
+        refreshControl.addTarget(self, action: #selector(refreshArticlesData), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    lazy private var tableView: UITableView = { [unowned self] in
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .sgBackgroundColor
+        tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -25,7 +31,6 @@ class HomeViewController: FalcViewController<HomeViewModel> {
         tableView.sectionFooterHeight = 0.0
         tableView.sectionHeaderHeight = 38
         tableView.register(cellWithClass: HomeItemTableViewCell.self)
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         return tableView
     }()
     
@@ -33,10 +38,12 @@ class HomeViewController: FalcViewController<HomeViewModel> {
         super.initialDatas()
         viewModel = HomeViewModel()
     }
-
+    
     override func initialViews() {
         super.initialViews()
+        self.view.backgroundColor = .sgBackgroundColor
         view.addSubview(tableView)
+        tableView.refreshControl = refreshControl
     }
     
     override func initialLayouts() {
@@ -46,10 +53,17 @@ class HomeViewController: FalcViewController<HomeViewModel> {
             make.edges.equalToSuperview()
         }
     }
-
+    
+    // MARK: - View Methods
+    
+    @objc private func refreshArticlesData(_ sender: Any) {
+        print("Refresh")
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel {
             let cell = tableView.dequeueReusableCell(withClass: HomeItemTableViewCell.self)
@@ -64,10 +78,23 @@ extension HomeViewController: UITableViewDataSource {
         return viewModel?.datas.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
 }
 
-extension HomeViewController: UITableViewDelegate {}
+extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel else { return }
+        if let url = URL(string: vm.articleUrlString) {
+            let articleViewController = ArticleViewController()
+            let viewModel = ArticleViewModel()
+            viewModel.articleUrlString = url.absoluteString
+            articleViewController.viewModel = viewModel
+            articleViewController.hidesBottomBarWhenPushed = true
+            guard let naviController = self.navigationController else { return }
+            naviController.pushViewController(articleViewController)
+        }
+    }
+    
+}
 

@@ -35,6 +35,13 @@
 		848EB81922C2F27000E4C549 /* FalcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81822C2F27000E4C549 /* FalcView.swift */; };
 		848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81C22C3C69200E4C549 /* HomeViewController.swift */; };
 		848EB81F22C3CCD500E4C549 /* FalcTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EB81E22C3CCD500E4C549 /* FalcTabBarController.swift */; };
+		95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C95F23141061006F37A4 /* ArticleViewController.swift */; };
+		95A6C96223141073006F37A4 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C96123141073006F37A4 /* MarkdownView.swift */; };
+		95A6C966231410BA006F37A4 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C965231410BA006F37A4 /* ArticleViewModel.swift */; };
+		95A6C96E231411F0006F37A4 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C96B231411EF006F37A4 /* index.html */; };
+		95A6C96F231411F0006F37A4 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C96C231411EF006F37A4 /* main.css */; };
+		95A6C970231411F0006F37A4 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C96D231411F0006F37A4 /* main.js */; };
+		95A6C97423141578006F37A4 /* sample.md in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C97323141578006F37A4 /* sample.md */; };
 		A3BAB3C2190F5029F705C64F /* Pods_Falcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +86,13 @@
 		848EB81C22C3C69200E4C549 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		848EB81E22C3CCD500E4C549 /* FalcTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcTabBarController.swift; sourceTree = "<group>"; };
 		8A2913FDB89468DEF16DB509 /* Pods-Falcon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Falcon.debug.xcconfig"; path = "Target Support Files/Pods-Falcon/Pods-Falcon.debug.xcconfig"; sourceTree = "<group>"; };
+		95A6C95F23141061006F37A4 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		95A6C96123141073006F37A4 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		95A6C965231410BA006F37A4 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		95A6C96B231411EF006F37A4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		95A6C96C231411EF006F37A4 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
+		95A6C96D231411F0006F37A4 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		95A6C97323141578006F37A4 /* sample.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = sample.md; sourceTree = "<group>"; };
 		A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.release.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.debug.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Falcon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +200,7 @@
 		84506BF522DC15BD0069717E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				95A6C95F23141061006F37A4 /* ArticleViewController.swift */,
 				848EB81C22C3C69200E4C549 /* HomeViewController.swift */,
 			);
 			path = Controller;
@@ -205,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				84506BFC22DC17560069717E /* HomeViewModel.swift */,
+				95A6C965231410BA006F37A4 /* ArticleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				84506BFF22DC1AAF0069717E /* HomeItemTableViewCell.swift */,
+				95A6C96123141073006F37A4 /* MarkdownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,6 +257,7 @@
 		848EB7F022C1B7E200E4C549 /* Falcon */ = {
 			isa = PBXGroup;
 			children = (
+				95A6C969231411B6006F37A4 /* Resources */,
 				84506BF822DC16CA0069717E /* Style */,
 				848EB81422C2F0C900E4C549 /* Core */,
 				848EB81322C2F0B900E4C549 /* Config */,
@@ -314,6 +332,25 @@
 				848EB81E22C3CCD500E4C549 /* FalcTabBarController.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		95A6C969231411B6006F37A4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95A6C96A231411E6006F37A4 /* Markdown */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		95A6C96A231411E6006F37A4 /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				95A6C97323141578006F37A4 /* sample.md */,
+				95A6C96B231411EF006F37A4 /* index.html */,
+				95A6C96C231411EF006F37A4 /* main.css */,
+				95A6C96D231411F0006F37A4 /* main.js */,
+			);
+			path = Markdown;
 			sourceTree = "<group>";
 		};
 		CC92B34EB387259D5C5E58D1 /* Pods */ = {
@@ -413,6 +450,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				848EB7FC22C1B7E300E4C549 /* LaunchScreen.storyboard in Resources */,
+				95A6C96F231411F0006F37A4 /* main.css in Resources */,
+				95A6C96E231411F0006F37A4 /* index.html in Resources */,
+				95A6C970231411F0006F37A4 /* main.js in Resources */,
+				95A6C97423141578006F37A4 /* sample.md in Resources */,
 				848EB7F922C1B7E300E4C549 /* Assets.xcassets in Resources */,
 				848EB7F722C1B7E200E4C549 /* Main.storyboard in Resources */,
 			);
@@ -520,16 +561,19 @@
 				104F4DDE22EC34A600F22A4E /* ShopItemTableViewCell.swift in Sources */,
 				84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */,
 				84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */,
+				95A6C966231410BA006F37A4 /* ArticleViewModel.swift in Sources */,
 				84506C0022DC1AAF0069717E /* HomeItemTableViewCell.swift in Sources */,
 				848EB81922C2F27000E4C549 /* FalcView.swift in Sources */,
 				84506C0422DC26870069717E /* UIFont+falc.swift in Sources */,
 				104F4DDB22EC347700F22A4E /* ShopViewModel.swift in Sources */,
 				10C7329122F7D37A006CB5D4 /* ShopItemAdCollectionViewCell.swift in Sources */,
+				95A6C96223141073006F37A4 /* MarkdownView.swift in Sources */,
 				10FD47EC230BC11F007BE72B /* EventItemCollectionViewCell.swift in Sources */,
 				848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */,
 				104F4DD822EC341300F22A4E /* ShopViewController.swift in Sources */,
 				84506BF722DC16220069717E /* FalcViewController.swift in Sources */,
 				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
+				95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */,
 				84506C0222DC25260069717E /* Array+.swift in Sources */,
 				10FD47E8230B91B4007BE72B /* EventViewController.swift in Sources */,
 			);
@@ -699,7 +743,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNL5G5M9A8;
+				DEVELOPMENT_TEAM = C8VX3ZLX5U;
 				INFOPLIST_FILE = Falcon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -718,7 +762,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNL5G5M9A8;
+				DEVELOPMENT_TEAM = C8VX3ZLX5U;
 				INFOPLIST_FILE = Falcon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
