@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let articlesNaviController = UINavigationController(rootViewController: articlesViewController)
         
         // Podcast
-        let podcastViewController = UIViewController()
+        let podcastViewController = GGTalkViewController()
         podcastViewController.navigationItem.title = "GGTalk"
         podcastViewController.tabBarItem.image = UIImage(named: "iconTabPodcast")
         podcastViewController.tabBarItem.selectedImage = UIImage(named: "iconTabPodcastTapped")
