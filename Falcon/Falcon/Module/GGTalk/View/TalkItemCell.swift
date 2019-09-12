@@ -40,10 +40,14 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
+    private var lineView = UIView().then {
+        $0.backgroundColor = UIColor.sgBackgroundColor
+    }
+    
     override func initialViews() {
         super.initialViews()
         addSubview(backView)
-        [titleLabel, descLabel, playButton, durationLabel, timeLabel].forEach {
+        [titleLabel, descLabel, playButton, durationLabel, timeLabel, lineView].forEach {
             backView.addSubview($0)
         }
     }
@@ -67,7 +71,7 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
             make.top.equalTo(descLabel.snp.bottom).offset(10)
             make.left.equalTo(descLabel)
             make.height.width.equalTo(25)
-            make.bottom.equalTo(-20)
+            make.bottom.equalTo(-22)
         }
         durationLabel.snp.makeConstraints { make in
             make.centerY.equalTo(playButton)
@@ -78,6 +82,10 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
             make.centerY.equalTo(playButton)
             make.right.equalTo(-16)
             make.left.equalTo(durationLabel.snp.right)
+        }
+        lineView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(2)
         }
     }
     

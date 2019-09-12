@@ -8,8 +8,12 @@
 
 import UIKit
 import Then
+import SWXMLHash
+import Alamofire
 
 class GGTalkViewController: FalcViewController<TalkListViewModel> {
+    
+    let talkListVM = TalkListViewModel()
     
     lazy private var refreshControl = UIRefreshControl().then { [unowned self] in
         $0.tintColor = UIColor.sgMainTintColor
@@ -31,7 +35,13 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
     override func initialDatas() {
         super.initialDatas()
-        viewModel = TalkListViewModel()
+        viewModel = talkListVM
+        Alamofire.request("https://talk.swift.gg/static/rss.xml", method: .get, parameters: nil).response { (response) in
+            guard let rawXML = response.data else { return }
+            let xml = SWXMLHash.parse(rawXML)
+            let itemList = xml["rss"]["channel"]["item"]
+            self.talkListVM.setNewData(xmlList: itemList.all)
+        }
     }
     
     override func initialViews() {
