@@ -17,7 +17,7 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
     lazy private var refreshControl = UIRefreshControl().then { [unowned self] in
         $0.tintColor = UIColor.sgMainTintColor
-        $0.addTarget(self, action: #selector(refreshArticlesData), for: .valueChanged)
+        $0.addTarget(self, action: #selector(refreshPageData), for: .valueChanged)
     }
     
     lazy private var tableView = UITableView().then { [unowned self] in
@@ -36,12 +36,12 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     override func initialDatas() {
         super.initialDatas()
         viewModel = talkListVM
-        Alamofire.request("https://talk.swift.gg/static/rss.xml", method: .get, parameters: nil).response { (response) in
-            guard let rawXML = response.data else { return }
-            let xml = SWXMLHash.parse(rawXML)
-            let itemList = xml["rss"]["channel"]["item"]
-            self.talkListVM.setNewData(xmlList: itemList.all)
-        }
+        refreshDataFromServer()
+    }
+    
+    override func updateViews() {
+        super.updateViews()
+        tableView.reloadData()
     }
     
     override func initialViews() {
@@ -60,8 +60,22 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
     // MARK: - View Methods
     
-    @objc private func refreshArticlesData(_ sender: Any) {
-        tableView.reloadData()
+    @objc private func refreshPageData(_ sender: Any) {
+        refreshDataFromServer()
+    }
+    
+    private func refreshDataFromServer() {
+        Alamofire.request("https://talk.swift.gg/static/rss.xml", method: .get, parameters: nil).response { (response) in
+            guard let rawXML = response.data else { return }
+            let xml = SWXMLHash.config({ (config) in
+                config.shouldProcessNamespaces = true
+                config.shouldProcessLazily = true
+            }).parse(rawXML)
+            let itemList = xml["rss"]["channel"]["item"]
+            self.talkListVM.setNewData(xmlList: itemList.all)
+            // TODO: - 延时收回
+            self.refreshControl.endRefreshing()
+        }
     }
     
 }
@@ -88,17 +102,7 @@ extension GGTalkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // 跳转
-//        guard let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel else { return }
-//        if let url = URL(string: vm.articleUrlString) {
-//            let articleViewController = ArticleViewController()
-//            let viewModel = ArticleViewModel()
-//            viewModel.articleUrlString = url.absoluteString
-//            articleViewController.viewModel = viewModel
-//            articleViewController.hidesBottomBarWhenPushed = true
-//            guard let naviController = self.navigationController else { return }
-//            naviController.pushViewController(articleViewController)
-//        }
+        // TODO: - 跳转到二级页面
     }
     
 }
