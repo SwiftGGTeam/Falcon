@@ -24,6 +24,9 @@
 		6DD60B072329F9DA0015A79F /* GGTalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */; };
 		6DD60B09232A213E0015A79F /* TalkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B08232A213E0015A79F /* TalkListViewModel.swift */; };
 		6DD60B0B232A228F0015A79F /* TalkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B0A232A228F0015A79F /* TalkItemCell.swift */; };
+		6DD60B0D232F362A0015A79F /* TalkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */; };
+		6DD60B0F232F67CE0015A79F /* TalkBottomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B0E232F67CE0015A79F /* TalkBottomProgressView.swift */; };
+		6DD60B11232F6E560015A79F /* TalkProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B10232F6E560015A79F /* TalkProgressViewModel.swift */; };
 		84506BF722DC16220069717E /* FalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF622DC16220069717E /* FalcViewController.swift */; };
 		84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF922DC16D90069717E /* UIColor+falc.swift */; };
 		84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BFC22DC17560069717E /* HomeViewModel.swift */; };
@@ -74,6 +77,9 @@
 		6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTalkViewController.swift; sourceTree = "<group>"; };
 		6DD60B08232A213E0015A79F /* TalkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkListViewModel.swift; sourceTree = "<group>"; };
 		6DD60B0A232A228F0015A79F /* TalkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkItemCell.swift; sourceTree = "<group>"; };
+		6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailViewController.swift; sourceTree = "<group>"; };
+		6DD60B0E232F67CE0015A79F /* TalkBottomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBottomProgressView.swift; sourceTree = "<group>"; };
+		6DD60B10232F6E560015A79F /* TalkProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkProgressViewModel.swift; sourceTree = "<group>"; };
 		84506BF622DC16220069717E /* FalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcViewController.swift; sourceTree = "<group>"; };
 		84506BF922DC16D90069717E /* UIColor+falc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+falc.swift"; sourceTree = "<group>"; };
 		84506BFC22DC17560069717E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -220,6 +226,7 @@
 			children = (
 				6DD60B08232A213E0015A79F /* TalkListViewModel.swift */,
 				6DD60B042329F8A90015A79F /* TalkItemViewModel.swift */,
+				6DD60B10232F6E560015A79F /* TalkProgressViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD60B0A232A228F0015A79F /* TalkItemCell.swift */,
+				6DD60B0E232F67CE0015A79F /* TalkBottomProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */,
+				6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -614,7 +623,9 @@
 				104F4DDB22EC347700F22A4E /* ShopViewModel.swift in Sources */,
 				10C7329122F7D37A006CB5D4 /* ShopItemAdCollectionViewCell.swift in Sources */,
 				95A6C96223141073006F37A4 /* MarkdownView.swift in Sources */,
+				6DD60B0F232F67CE0015A79F /* TalkBottomProgressView.swift in Sources */,
 				10FD47EC230BC11F007BE72B /* EventItemCollectionViewCell.swift in Sources */,
+				6DD60B11232F6E560015A79F /* TalkProgressViewModel.swift in Sources */,
 				848EB81D22C3C69200E4C549 /* HomeViewController.swift in Sources */,
 				104F4DD822EC341300F22A4E /* ShopViewController.swift in Sources */,
 				84506BF722DC16220069717E /* FalcViewController.swift in Sources */,
@@ -624,6 +635,7 @@
 				95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */,
 				84506C0222DC25260069717E /* Array+.swift in Sources */,
 				10FD47E8230B91B4007BE72B /* EventViewController.swift in Sources */,
+				6DD60B0D232F362A0015A79F /* TalkDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

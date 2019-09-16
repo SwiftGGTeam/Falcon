@@ -10,6 +10,7 @@ import SWXMLHash
 
 class TalkItemViewModel: FalcViewModel<NSObject> {
     
+    // TODO: - 把日期、duration 转换成 TimeInterval
     /// 标题
     public var title = ""
     /// 详细描述

@@ -33,6 +33,8 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         $0.register(cellWithClass: TalkItemCell.self)
     }
     
+    private var talkProgressView = TalkBottomProgressView(TalkProgressViewModel())
+    
     override func initialDatas() {
         super.initialDatas()
         viewModel = talkListVM
@@ -48,13 +50,20 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         super.initialViews()
         self.view.backgroundColor = .sgBackgroundColor
         view.addSubview(tableView)
+        view.addSubview(talkProgressView)
         tableView.refreshControl = refreshControl
     }
     
     override func initialLayouts() {
         super.initialLayouts()
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+        }
+        talkProgressView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            make.top.equalTo(tableView.snp.bottom)
         }
     }
     
@@ -102,7 +111,13 @@ extension GGTalkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // TODO: - 跳转到二级页面
+        if let vm = viewModel?.datas[safe: indexPath.row] as? TalkItemViewModel {
+            let progressModel = TalkProgressViewModel()
+            // TODO: - 统一 TalkProgressViewModel 属性，增加 convenience init
+            progressModel.title = vm.title
+//            progressModel.duration = vm.duration
+            talkProgressView.viewModel = progressModel
+        }
     }
     
 }
