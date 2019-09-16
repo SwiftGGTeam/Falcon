@@ -10,6 +10,8 @@ import UIKit
 
 class TalkBottomProgressView: FalcView<TalkProgressViewModel> {
     
+    static let ProgressViewHeight: CGFloat = 60
+    
     private let progressView = UIProgressView(progressViewStyle: .default).then {
         $0.progressTintColor = .sgMainTintColor
         $0.trackTintColor = UIColor(red: 232 / 255.0, green: 232 / 255.0, blue: 232 / 255.0, alpha: 1.0)
@@ -31,8 +33,11 @@ class TalkBottomProgressView: FalcView<TalkProgressViewModel> {
     
     override func initialViews() {
         super.initialViews()
-        backgroundColor = UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.3)
-        [progressView, titleLabel, timeLabel, playButton].forEach {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.frame = bounds
+        [blurEffectView, progressView, titleLabel, timeLabel, playButton].forEach {
             addSubview($0)
         }
     }

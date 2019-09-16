@@ -33,7 +33,10 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         $0.register(cellWithClass: TalkItemCell.self)
     }
     
-    private var talkProgressView = TalkBottomProgressView(TalkProgressViewModel())
+    private var talkProgressView = TalkBottomProgressView(TalkProgressViewModel()).then {
+        $0.backgroundColor = UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.3)
+        $0.isHidden = true
+    }
     
     override func initialDatas() {
         super.initialDatas()
@@ -57,13 +60,12 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     override func initialLayouts() {
         super.initialLayouts()
         tableView.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+            make.edges.equalToSuperview()
         }
         talkProgressView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            make.top.equalTo(tableView.snp.bottom)
+            make.height.equalTo(TalkBottomProgressView.ProgressViewHeight)
         }
     }
     
@@ -117,6 +119,7 @@ extension GGTalkViewController: UITableViewDelegate {
             progressModel.title = vm.title
 //            progressModel.duration = vm.duration
             talkProgressView.viewModel = progressModel
+            talkProgressView.isHidden = false
         }
     }
     
