@@ -18,8 +18,16 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         return markdownView
     }()
     
+    override func initialDatas() {
+        super.initialDatas()
+        viewModel?.vmDelegate = self
+        viewModel?.fetchData()
+    }
+    
     override func initialViews() {
         super.initialViews()
+        self.view.backgroundColor = .white
+//        navigationController?.hidesBarsOnSwipe = true
         view.addSubview(markdownView)
     }
     
@@ -35,13 +43,12 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         super.updateViews()
         
         guard let viewModel = viewModel else { return }
-        //        let url = viewModel.articleUrlString
         
-        let path = Bundle.main.path(forResource: "sample", ofType: "md")!
-        let url = URL(fileURLWithPath: path)
-        let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
-        viewModel.markdown = markdown
-        markdownView.viewModel = viewModel
+        let markdownViewModel = MarkdownViewModel()
+        markdownViewModel.markdown = viewModel.data?.body
+        markdownViewModel.isShowImage = true
+        markdownViewModel.canTouchImage = true
+        markdownView.viewModel = markdownViewModel
     }
 }
 
@@ -66,6 +73,20 @@ extension ArticleViewController: MarkdownViewDelegate {
         } else {
             return false
         }
+    }
+    
+    func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool {
+        print(url)
+        return true
+    }
+    
+}
+
+extension ArticleViewController: ViewModelDelegate {
+    
+    func updateViewAfterChangeData() {
+        updateViews()
+        updateLayouts()
     }
     
 }
