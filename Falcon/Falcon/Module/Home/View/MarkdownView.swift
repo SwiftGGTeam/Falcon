@@ -12,14 +12,16 @@ import WebKit
 protocol MarkdownViewDelegate: NSObjectProtocol {
     func didFinishRendering(_ markdownView: MarkdownView, height: CGFloat)
     func onTouchLink(_ markdownView: MarkdownView, request: URLRequest) -> Bool
+    func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool
 }
 
 extension MarkdownViewDelegate {
     func didFinishRendering(_ markdownView: MarkdownView, height: CGFloat) {}
     func onTouchLink(_ markdownView: MarkdownView) -> Bool { return false }
+    func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool { return false }
 }
 
-class MarkdownView: FalcView<ArticleViewModel> {
+class MarkdownView: FalcView<MarkdownViewModel> {
     
     private var webView: WKWebView?
     
@@ -48,16 +50,15 @@ class MarkdownView: FalcView<ArticleViewModel> {
     override func updateViews() {
         super.updateViews()
         
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel,
+            let markdown = viewModel.markdown else { return }
         
         let bundle = Bundle(for: MarkdownView.self)
         let htmlURL: URL? = bundle.url(forResource: "index", withExtension: "html")
         guard let url = htmlURL else { return }
         
-        let markdown = viewModel.markdown
         let escapedMarkdown = self.escape(markdown: markdown) ?? ""
-        let imageOption = "true"
-        let script = "window.showMarkdown('\(escapedMarkdown)', \(imageOption));"
+        let script = "window.showMarkdown('\(escapedMarkdown)', \(viewModel.isShowImage), \(viewModel.canTouchImage));"
         let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         
         let controller = WKUserContentController()
@@ -100,13 +101,28 @@ extension MarkdownView: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
         switch navigationAction.navigationType {
         case .linkActivated:
-            if let should = delegate?.onTouchLink(self, request: navigationAction.request), should {
-                decisionHandler(.allow)
+            if let urlString = navigationAction.request.url?.absoluteString,
+                urlString.starts(with: "img:") {
+                // touch img link
+                let index = urlString.index(urlString.startIndex, offsetBy: 4)
+                let newUrlString = urlString.suffix(from: index)
+                let newUrl = URL(string: String(newUrlString))
+                if let url = newUrl,
+                    let should = delegate?.onTouchImage(self, url: url),
+                    should {
+                    decisionHandler(.allow)
+                } else {
+                    decisionHandler(.cancel)
+                }
             } else {
-                decisionHandler(.cancel)
+                // touch link
+                if let should = delegate?.onTouchLink(self, request: navigationAction.request), should {
+                    decisionHandler(.allow)
+                } else {
+                    decisionHandler(.cancel)
+                }
             }
         default:
             decisionHandler(.allow)
