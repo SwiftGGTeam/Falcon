@@ -18,17 +18,28 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         return markdownView
     }()
     
+    private var progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.progressTintColor = UIColor.sgMainTintColor
+        progressView.trackTintColor = UIColor.sgLightGrayColor
+        return progressView
+    }()
+    
     override func initialDatas() {
         super.initialDatas()
         viewModel?.vmDelegate = self
         viewModel?.fetchData()
+        progressView.progress = 0.3
+        progressView.setProgress(progressView.progress, animated: true)
     }
     
     override func initialViews() {
         super.initialViews()
         self.view.backgroundColor = .white
-//        navigationController?.hidesBarsOnSwipe = true
-        view.addSubview(markdownView)
+        [markdownView, progressView].forEach {
+            view.addSubview($0)
+        }
+//        markdownView.addSubview()
     }
     
     override func initialLayouts() {
@@ -36,6 +47,12 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         
         markdownView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        progressView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            make.height.equalTo(2)
         }
     }
     
@@ -49,6 +66,11 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         markdownViewModel.isShowImage = true
         markdownViewModel.canTouchImage = true
         markdownView.viewModel = markdownViewModel
+        
+        if progressView.progress == 0.3 {
+            progressView.progress = 0.8
+            progressView.setProgress(progressView.progress, animated: true)
+        }
     }
 }
 
@@ -56,6 +78,9 @@ extension ArticleViewController: MarkdownViewDelegate {
     
     func didFinishRendering(_ markdownView: MarkdownView, height: CGFloat) {
         print("Markdown did finish rendering, the height is", height)
+        progressView.progress = 1.0
+        progressView.setProgress(progressView.progress, animated: true)
+        progressView.isHidden = true
     }
     
     func onTouchLink(_ markdownView: MarkdownView, request: URLRequest) -> Bool {
@@ -77,6 +102,9 @@ extension ArticleViewController: MarkdownViewDelegate {
     
     func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool {
         print(url)
+        let imageViewerController = ArticleImageViewerController()
+        imageViewerController.imageUrl = url
+        navigationController?.pushViewController(imageViewerController, animated: true)
         return true
     }
     
