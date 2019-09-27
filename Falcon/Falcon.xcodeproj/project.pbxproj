@@ -20,6 +20,7 @@
 		10FD47EA230BA069007BE72B /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD47E9230BA069007BE72B /* EventViewModel.swift */; };
 		10FD47EC230BC11F007BE72B /* EventItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD47EB230BC11F007BE72B /* EventItemCollectionViewCell.swift */; };
 		355655A12E383E70E02E3069 /* Pods_FalconTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */; };
+		6D794414233DAF3000F09357 /* PullUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D794413233DAF3000F09357 /* PullUpViewController.swift */; };
 		6DD60B052329F8A90015A79F /* TalkItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B042329F8A90015A79F /* TalkItemViewModel.swift */; };
 		6DD60B072329F9DA0015A79F /* GGTalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */; };
 		6DD60B09232A213E0015A79F /* TalkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B08232A213E0015A79F /* TalkListViewModel.swift */; };
@@ -73,6 +74,7 @@
 		10FD47EB230BC11F007BE72B /* EventItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventItemCollectionViewCell.swift; path = Falcon/Module/Event/View/EventItemCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		12229BD8609C81FB89672E66 /* Pods-Falcon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Falcon.release.xcconfig"; path = "Target Support Files/Pods-Falcon/Pods-Falcon.release.xcconfig"; sourceTree = "<group>"; };
 		3A02CF74D0526C90D436EBE1 /* Pods_FalconTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FalconTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D794413233DAF3000F09357 /* PullUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUpViewController.swift; sourceTree = "<group>"; };
 		6DD60B042329F8A90015A79F /* TalkItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkItemViewModel.swift; sourceTree = "<group>"; };
 		6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTalkViewController.swift; sourceTree = "<group>"; };
 		6DD60B08232A213E0015A79F /* TalkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkListViewModel.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */,
 				6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */,
+				6D794413233DAF3000F09357 /* PullUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				6DD60B052329F8A90015A79F /* TalkItemViewModel.swift in Sources */,
 				848EB81F22C3CCD500E4C549 /* FalcTabBarController.swift in Sources */,
 				104F4DDE22EC34A600F22A4E /* ShopItemTableViewCell.swift in Sources */,
+				6D794414233DAF3000F09357 /* PullUpViewController.swift in Sources */,
 				6DD60B072329F9DA0015A79F /* GGTalkViewController.swift in Sources */,
 				84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */,
 				84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */,

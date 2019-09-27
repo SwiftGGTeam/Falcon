@@ -9,11 +9,11 @@
 import UIKit
 import Then
 
-class TalkDetailViewController: FalcViewController<TalkListViewModel> {
+class TalkDetailViewController: PullUpController<TalkListViewModel> {
     
-    override func initialViews() {
-        super.initialViews()
-        view.backgroundColor = .blue
+    override var pullUpControllerPreferredSize: CGSize {
+        let height = tabBarController?.tabBar.frame.size.height ?? 44
+        return CGSize(width: UIScreen.main.bounds.width, height: height)
     }
     
 }

@@ -13,7 +13,8 @@ import Alamofire
 
 class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
-    let talkListVM = TalkListViewModel()
+    private let talkListVM = TalkListViewModel()
+    private lazy var detailVC = TalkDetailViewController()
     
     lazy private var refreshControl = UIRefreshControl().then { [unowned self] in
         $0.tintColor = UIColor.sgMainTintColor
@@ -89,6 +90,12 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         }
     }
     
+    // MARK: - Gesture
+    
+    @objc private func showDetailPage() {
+        addPullUpController(detailVC, initialStickyPointOffset: UIScreen.main.bounds.height - 44, animated: true)
+    }
+    
 }
 
 extension GGTalkViewController: UITableViewDataSource {
@@ -121,7 +128,8 @@ extension GGTalkViewController: UITableViewDelegate {
             talkProgressView.viewModel = progressModel
             talkProgressView.isHidden = false
         }
+        // TODO: - 需要加对应的 move 操作
+        showDetailPage()
     }
     
 }
-
