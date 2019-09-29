@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 /// 活动 cell
 class EventItemCollectionViewCell: FalcCollectionViewCell<EventItemCollectionViewCellModel> {
@@ -17,7 +18,7 @@ class EventItemCollectionViewCell: FalcCollectionViewCell<EventItemCollectionVie
     
     private var backgroundImage: UIImageView = {
         var imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.cornerRadius = 5
         imageView.clipsToBounds = true
         return imageView
@@ -112,11 +113,27 @@ class EventItemCollectionViewCell: FalcCollectionViewCell<EventItemCollectionVie
     }
 }
 
-class EventItemCollectionViewCellModel: FalcViewModel<NSObject> {
+class EventItemCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
+    required init?(map: Map) {
+        
+    }
+    
     public var backgroundImage: String = ""
     public var titleText: String = ""
     public var statusText: String = ""
     public var locationText: String = ""
     public var timeText: String = ""
+    public var registerURL: String = ""
+    
+    
+    func mapping(map: Map) {
+        backgroundImage <- map["imageURL"]
+        titleText <- map["name"]
+        statusText <- map["state"]
+        locationText <- map["place"]
+        timeText <- map["date"]
+        registerURL <- map["registerURL"]
+    }
+    
 
 }

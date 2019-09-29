@@ -14,12 +14,15 @@ enum Router: URLRequestConvertible {
     
     case articles(Int, Int)
     case article(Int)
+    case events
     
     private var method: HTTPMethod {
         switch self {
         case .articles:
             return .get
         case .article:
+            return .get
+        case .events:
             return .get
         }
     }
@@ -30,6 +33,8 @@ enum Router: URLRequestConvertible {
             return "/app/posts"
         case .article(let id):
             return "/app/post/\(id)"
+        case .events:
+            return "/app/events"
         }
     }
     
@@ -38,6 +43,8 @@ enum Router: URLRequestConvertible {
         case .articles(let page, let size):
             return ["page": page, "size": size]
         case .article:
+            return nil
+        case .events:
             return nil
         }
     }

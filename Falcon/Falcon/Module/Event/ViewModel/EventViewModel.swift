@@ -7,20 +7,33 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireObjectMapper
 
 /// 活动模块
 class EventViewModel: FalcViewModel<ViewModel> {
 
     override func initialDatas() {
         super.initialDatas()
-        let eventItem = EventItemCollectionViewCellModel()
-        eventItem.backgroundImage = "https://img.mukewang.com/szimg/5d1032ab08719e0906000338-360-202.jpg"
-        eventItem.titleText = "互联网寒冬来袭\n移动开发者如何破局"
-        eventItem.statusText = "开放报名中"
-        eventItem.locationText = "上海虹口区上海市天水路172号金融街海伦中心B座"
-        eventItem.timeText = "2019-04-20  13:00 ~ 18:00"
-        for _ in 0 ..< 10 {
-            datas.append(eventItem)
+        fetchData {
+        }
+    }
+    
+    func fetchData(_ handleDone: @escaping () -> Void) {
+        Alamofire.request(Router.events).responseObject {
+            (response: DataResponse<GeneralResponse<EventModel>>) in
+            let generalResponse = response.result.value
+            guard let success = generalResponse?.success, success else {
+                print("General Response Error! \(generalResponse?.message ?? "")")
+                return
+            }
+            guard let eventModel = generalResponse?.results,
+                let eventModels = eventModel.eventModels else {
+                    print("ORM Error: Can not get homeModel!")
+                    return
+            }
+            self.datas = eventModels
+            handleDone()
         }
     }
     
