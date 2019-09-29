@@ -8,6 +8,13 @@
 
 import UIKit
 
-class ShopDetailViewModel: FalcViewModel {
+/// 商品详情ViewModel
+class ShopDetailViewModel: FalcViewModel <ViewModel> {
 
+    public var previousPriceText: String = ""
+    public var nowPriceText: String = ""
+    
+    public var articleUrlString: String = ""
+    public var markdown: String = ""
+    
 }
