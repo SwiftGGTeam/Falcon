@@ -111,7 +111,8 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
     }
 }
 
-class ShopItemTableViewCellModel: FalcViewModel<NSObject> {
+class ShopItemTableViewCellModel: FalcViewModel<NSObject>, Mappable {
+    public var id: Int = 0
     public var goodsImage: String = ""
     public var titleText: String = ""
     public var descText: String = ""
@@ -121,4 +122,17 @@ class ShopItemTableViewCellModel: FalcViewModel<NSObject> {
             priceText = "￥ \(price)"
         }
     }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        backgroundImage <- map["imageURL"]
+        titleText <- map["name"]
+        descText <- map["preface"]
+        price <- map["price"]
+    }
+    
 }

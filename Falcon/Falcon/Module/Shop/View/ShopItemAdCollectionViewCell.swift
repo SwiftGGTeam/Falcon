@@ -83,8 +83,20 @@ class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionV
     
 }
 
-class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject> {
+class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
     public var goodsImage: String = ""
     public var typeText: String = ""
     public var titleText : String = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        backgroundImage <- map["imageURL"]
+        titleText <- map["name"]
+        descText <- map["preface"]
+        price <- map["price"]
+    }
 }

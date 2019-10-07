@@ -125,7 +125,6 @@ class EventItemCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
     public var timeText: String = ""
     public var registerURL: String = ""
     
-    
     func mapping(map: Map) {
         backgroundImage <- map["imageURL"]
         titleText <- map["name"]
@@ -135,5 +134,4 @@ class EventItemCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
         registerURL <- map["registerURL"]
     }
     
-
 }
