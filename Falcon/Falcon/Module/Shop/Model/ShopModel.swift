@@ -10,17 +10,16 @@ import UIKit
 import ObjectMapper
 
 /// 商店网络返回model
-class ShopModel: Mapper {
-    var banner: [ShopItemTableViewCellModel]?
-    var list: [ShopItemAdCollectionViewCellModel]?
+class ShopModel: Mappable {
+    var banner: [ShopItemAdCollectionViewCellModel]?
+    var list: [ShopItemTableViewCellModel]?
+    
     required init?(map: Map){
         
     }
     
     func mapping(map: Map) {
-        page <- map["pageBean.page"]
-        size <- map["pageBean.size"]
-        total <- map["pageBean.total"]
-        eventModels <- map["items"]
+        banner <- map["banner"]
+        list <- map["list"]
     }
 }

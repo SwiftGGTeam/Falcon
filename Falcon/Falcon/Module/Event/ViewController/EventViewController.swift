@@ -20,7 +20,6 @@ class EventViewController: FalcViewController<EventViewModel> {
         return refreshControl
     }()
     
-    
     lazy private var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical

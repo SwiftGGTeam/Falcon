@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 /// shop 模块顶部的优惠 cell
 class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionViewCellModel> {
@@ -84,19 +85,27 @@ class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionV
 }
 
 class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
+    public var id: Int = 0
     public var goodsImage: String = ""
     public var typeText: String = ""
     public var titleText : String = ""
-    
+    public var descText: String = ""
+    public var price: Int = 0 {
+        didSet {
+            typeText = "￥ \(price)"
+        }
+    }
+
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
         id <- map["id"]
-        backgroundImage <- map["imageURL"]
+        goodsImage <- map["imageURL"]
         titleText <- map["name"]
         descText <- map["preface"]
         price <- map["price"]
     }
+    
 }

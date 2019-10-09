@@ -10,6 +10,7 @@ import UIKit
 import SwifterSwift
 import Then
 import SDWebImage
+import ObjectMapper
 
 /// 商店列表商品 Cell
 class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
@@ -129,7 +130,7 @@ class ShopItemTableViewCellModel: FalcViewModel<NSObject>, Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        backgroundImage <- map["imageURL"]
+        goodsImage <- map["imageURL"]
         titleText <- map["name"]
         descText <- map["preface"]
         price <- map["price"]
