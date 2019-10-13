@@ -123,7 +123,7 @@ class EventItemCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
     public var statusText: String = ""
     public var locationText: String = ""
     public var timeText: String = ""
-    public var registerURL: String = ""
+    public var registerURL: String?
     
     func mapping(map: Map) {
         backgroundImage <- map["imageURL"]

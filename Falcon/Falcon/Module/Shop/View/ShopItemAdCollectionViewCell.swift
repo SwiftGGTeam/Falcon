@@ -107,5 +107,4 @@ class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
         descText <- map["preface"]
         price <- map["price"]
     }
-    
 }

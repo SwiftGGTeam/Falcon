@@ -72,10 +72,18 @@ extension ShopItemAdContainerTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.datas.count ?? 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        if let handler = viewModel?.didSelectHandler {
+            handler(collectionView, indexPath)
+        }
+    }
+    
 }
 
 extension ShopItemAdContainerTableViewCell: UICollectionViewDelegate {}
 
 class ShopItemAdContainerTableViewCellModel: FalcViewModel<NSObject> {
-
+    var didSelectHandler: ((_ collectionView: UICollectionView, _ indexPath: IndexPath) -> Void)?
 }

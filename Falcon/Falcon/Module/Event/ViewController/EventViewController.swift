@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SwifterSwift
+import SafariServices
 
 /// 活动模块
 class EventViewController: FalcViewController<EventViewModel> {
@@ -79,6 +80,14 @@ extension EventViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.datas.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vm = viewModel?.datas[safe: indexPath.row] as? EventItemCollectionViewCellModel, let urlString = vm.registerURL, let url = URL(string: urlString) else { return }
+        let safariController = SFSafariViewController(url: url)
+        safariController.preferredBarTintColor = UIColor.sgNaviColor
+        safariController.preferredControlTintColor = UIColor.sgMainTintColor
+        self.present(safariController, animated: true, completion: nil)
     }
 }
 

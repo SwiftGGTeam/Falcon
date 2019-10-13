@@ -48,7 +48,10 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         var label = UILabel()
         label.text = "¥ 139"
         label.textColor = UIColor.white
+        label.backgroundColor = UIColor.sgMainTintColor
         label.font = UIFont.falcFont(size: 12, thick: .medium)
+        label.cornerRadius = 2
+
         return label
     }()
     
@@ -95,6 +98,12 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
             make.leading.equalTo(titleLabel)
             make.trailing.equalToSuperview().offset(-46)
         }
+        priceLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(goodsImage.snp.trailing).offset(5)
+            make.bottom.equalTo(goodsImage.snp.bottom).offset(5)
+            make.height.equalTo(23)
+        }
+        
         
         lineView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -120,7 +129,7 @@ class ShopItemTableViewCellModel: FalcViewModel<NSObject>, Mappable {
     public var priceText: String = ""
     public var price: Int = 0 {
         didSet {
-            priceText = "￥ \(price)"
+            priceText = "  ￥\(price)  "
         }
     }
     
@@ -135,5 +144,4 @@ class ShopItemTableViewCellModel: FalcViewModel<NSObject>, Mappable {
         descText <- map["preface"]
         price <- map["price"]
     }
-    
 }

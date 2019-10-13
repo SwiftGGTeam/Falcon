@@ -11,13 +11,7 @@ import SnapKit
 import SafariServices
 
 /// 商品详情
-class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
-
-    // 轮播图
-    private var autoScrollView: UIView = {
-        var view = UIView()
-        return view
-    }()
+class ShopDetailViewController: FalcViewController<ShopDetailViewModel>, BasicViewDelegate {
     
     lazy private var markdownView: MarkdownView = { [unowned self] in
         let markdownView = MarkdownView()
@@ -25,8 +19,16 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
         return markdownView
     }()
     
+    private var progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.progressTintColor = UIColor.sgMainTintColor
+        progressView.trackTintColor = UIColor.sgLightGrayColor
+        return progressView
+    }()
+    
     private var bottomCartView: UIView = {
         var view = UIView()
+        view.backgroundColor = UIColor.sgMainTintColor
         return view
     }()
     
@@ -35,6 +37,7 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
         button.backgroundColor = UIColor.white
         button.setTitleColor(.white, for: .normal)
         button.setImage(UIImage(named: "iconBuy"), for: .normal)
+        button.addTarget(self, action: #selector(clickBuyAction), for: .touchUpInside)
         button.cornerRadius = 27.5
         return button
     }()
@@ -42,10 +45,18 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
     private var previousPriceLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 1
-        label.textColor = UIColor(white: 0.0, alpha: 0.75)
+        label.textColor = UIColor(white: 1.0, alpha: 0.75)
         label.font = UIFont.textStyle2
         return label
     }()
+    
+    let previousPriceLabelAttr: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor(white: 1.0, alpha: 0.75),
+        .font: UIFont.textStyle2,
+        .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+        .strikethroughColor: UIColor(white: 1.0, alpha: 0.75),
+        .baselineOffset: 0
+    ]
     
     private var nowPriceLabel: UILabel = {
         
@@ -58,34 +69,56 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
     
     override func initialViews() {
         super.initialViews()
-        view.addSubview(autoScrollView)
+        view.addSubview(progressView)
         view.addSubview(markdownView)
         view.addSubview(bottomCartView)
         bottomCartView.addSubview(addCartButton)
         bottomCartView.addSubview(previousPriceLabel)
         bottomCartView.addSubview(nowPriceLabel)
+        
+        progressView.progress = 0.3
+        progressView.setProgress(progressView.progress, animated: true)
+    }
+    
+    override func updateViews() {
+        super.updateViews()
+        guard let viewModel = viewModel, let shopGoodsModel = viewModel.data as? ShopGoodsModel else { return }
+        previousPriceLabel.attributedText = NSAttributedString(string: shopGoodsModel.previousPriceText, attributes: previousPriceLabelAttr)
+        nowPriceLabel.text = shopGoodsModel.nowPriceText
+        
+        let markdownViewModel = MarkdownViewModel()
+        markdownViewModel.markdown = shopGoodsModel.markdown
+        markdownViewModel.isShowImage = true
+        markdownViewModel.canTouchImage = true
+        markdownView.viewModel = markdownViewModel
+        
+        if progressView.progress == 0.3 {
+            progressView.progress = 0.8
+            progressView.setProgress(progressView.progress, animated: true)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func initialLayouts() {
         super.initialLayouts()
         
-        autoScrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(autoScrollView.snp.width).multipliedBy(281.0/375.0)
-        }
-        markdownView.snp.makeConstraints { make in
+        progressView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(autoScrollView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            make.height.equalTo(2)
+        }
+        
+        markdownView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-65)
         }
         bottomCartView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(65)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(markdownView.snp.bottom)
+            make.bottom.equalTo(view)
         }
         
         previousPriceLabel.snp.makeConstraints { make in
@@ -101,24 +134,38 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel> {
         }
         
         addCartButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(18)
+            make.trailing.equalToSuperview().offset(-18)
             make.top.equalToSuperview().offset(8)
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
-        
     }
     
+    @objc private func clickBuyAction(_ sender: Any) {
+        guard let shopGoodsModel = viewModel?.data as? ShopGoodsModel, let urlString = shopGoodsModel.purchaseURL, let url = URL(string: urlString) else { return }
+        let safariController = SFSafariViewController(url: url)
+        safariController.preferredBarTintColor = UIColor.sgNaviColor
+        safariController.preferredControlTintColor = UIColor.sgMainTintColor
+        self.present(safariController, animated: true, completion: nil)
+    }
+}
+
+extension ShopDetailViewController {
+    open func modelChanged(_ models: [Any]) {
+        self.updateViews()
+    }
 }
 
 extension ShopDetailViewController: MarkdownViewDelegate {
     
     func didFinishRendering(_ markdownView: MarkdownView, height: CGFloat) {
         print("Markdown did finish rendering, the height is", height)
+        progressView.progress = 1.0
+        progressView.setProgress(progressView.progress, animated: true)
+        progressView.isHidden = true
     }
     
     func onTouchLink(_ markdownView: MarkdownView, request: URLRequest) -> Bool {
         guard let url = request.url else { return false }
-        //        guard let naviController = self.navigationController else { return false }
         if url.scheme == "file" {
             return false
         } else if url.scheme == "https" {
@@ -126,11 +173,18 @@ extension ShopDetailViewController: MarkdownViewDelegate {
             safariController.preferredBarTintColor = UIColor.sgNaviColor
             safariController.preferredControlTintColor = UIColor.sgMainTintColor
             self.present(safariController, animated: true, completion: nil)
-            //            naviController.pushViewController(safari, animated: true)
             return false
         } else {
             return false
         }
+    }
+    
+    func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool {
+        print(url)
+        let imageViewerController = ArticleImageViewerController()
+        imageViewerController.imageUrl = url
+        navigationController?.pushViewController(imageViewerController, animated: true)
+        return true
     }
     
 }
