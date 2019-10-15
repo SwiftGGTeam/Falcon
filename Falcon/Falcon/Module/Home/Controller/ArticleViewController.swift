@@ -15,6 +15,9 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
     lazy private var markdownView: MarkdownView = { [unowned self] in
         let markdownView = MarkdownView()
         markdownView.delegate = self
+        if #available(iOS 13.0, *) {
+            markdownView.backgroundColor = .systemBackground
+        }
         return markdownView
     }()
     
@@ -90,7 +93,7 @@ extension ArticleViewController: MarkdownViewDelegate {
             return false
         } else if url.scheme == "https" {
             let safariController = SFSafariViewController(url: url)
-            safariController.preferredBarTintColor = UIColor.sgNaviColor
+            safariController.preferredBarTintColor = UIColor.falcNaviBackColor
             safariController.preferredControlTintColor = UIColor.sgMainTintColor
             self.present(safariController, animated: true, completion: nil)
             //            naviController.pushViewController(safari, animated: true)
