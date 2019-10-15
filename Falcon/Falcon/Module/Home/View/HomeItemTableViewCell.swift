@@ -18,7 +18,7 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.textColor = UIColor.sgBlackColor
+        label.textColor = UIColor.falcBlackColor
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return label
@@ -35,7 +35,7 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     private var descLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.sgDarkGrayColor
+        label.textColor = UIColor.falcDarkGrayColor
         label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         return label
     }()
@@ -63,14 +63,14 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     private var timeLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.sgLightGrayColor
+        label.textColor = UIColor.falcLightGrayColor
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         return label
     }()
     
     private var lineView: UIView = {
         var view = UIView()
-        view.backgroundColor = UIColor.sgBackgroundColor
+        view.backgroundColor = UIColor.falcLineColor
         return view
     }()
     

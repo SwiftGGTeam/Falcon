@@ -23,15 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // Set appearance
-        UITabBar.appearance().backgroundColor = .sgTabBarColor
+        UITabBar.appearance().backgroundColor = .falcTabBackColor
         UITabBar.appearance().tintColor = .sgMainTintColor
         // remove top line from tab bar
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
         
-        UINavigationBar.appearance().barTintColor = .sgNaviColor
+        UINavigationBar.appearance().barTintColor = .falcNaviBackColor
         UINavigationBar.appearance().tintColor = .sgMainTintColor
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.sgNaviTitleBlackColor,
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.falcNaviTitleBlackColor,
                                                             .font : UIFont.sgNaviTitle]
         UINavigationBar.appearance().shadowImage = UIImage()
         

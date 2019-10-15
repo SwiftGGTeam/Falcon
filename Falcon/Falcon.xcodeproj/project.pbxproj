@@ -55,11 +55,11 @@
 		95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C95F23141061006F37A4 /* ArticleViewController.swift */; };
 		95A6C96223141073006F37A4 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C96123141073006F37A4 /* MarkdownView.swift */; };
 		95A6C966231410BA006F37A4 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6C965231410BA006F37A4 /* ArticleViewModel.swift */; };
-		95A6C96E231411F0006F37A4 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C96B231411EF006F37A4 /* index.html */; };
-		95A6C96F231411F0006F37A4 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C96C231411EF006F37A4 /* main.css */; };
 		95A6C97423141578006F37A4 /* sample.md in Resources */ = {isa = PBXBuildFile; fileRef = 95A6C97323141578006F37A4 /* sample.md */; };
 		95C31A582334B4B200B5DCAD /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C31A572334B4B200B5DCAD /* MarkdownViewModel.swift */; };
-		95F444302333AE1100574BE6 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 95F4442F2333AE1100574BE6 /* main.js */; };
+		95ED063A23490D8400DB2800 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 95ED063723490D8300DB2800 /* index.html */; };
+		95ED063B23490D8400DB2800 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 95ED063823490D8400DB2800 /* main.js */; };
+		95ED063C23490D8400DB2800 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 95ED063923490D8400DB2800 /* main.css */; };
 		A3BAB3C2190F5029F705C64F /* Pods_Falcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,11 +124,11 @@
 		95A6C95F23141061006F37A4 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		95A6C96123141073006F37A4 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		95A6C965231410BA006F37A4 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
-		95A6C96B231411EF006F37A4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		95A6C96C231411EF006F37A4 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
 		95A6C97323141578006F37A4 /* sample.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = sample.md; sourceTree = "<group>"; };
 		95C31A572334B4B200B5DCAD /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
-		95F4442F2333AE1100574BE6 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		95ED063723490D8300DB2800 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		95ED063823490D8400DB2800 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		95ED063923490D8400DB2800 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
 		A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.release.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.debug.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Falcon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -456,9 +456,9 @@
 			isa = PBXGroup;
 			children = (
 				95A6C97323141578006F37A4 /* sample.md */,
-				95A6C96B231411EF006F37A4 /* index.html */,
-				95A6C96C231411EF006F37A4 /* main.css */,
-				95F4442F2333AE1100574BE6 /* main.js */,
+				95ED063723490D8300DB2800 /* index.html */,
+				95ED063923490D8400DB2800 /* main.css */,
+				95ED063823490D8400DB2800 /* main.js */,
 			);
 			path = Markdown;
 			sourceTree = "<group>";
@@ -559,11 +559,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95ED063A23490D8400DB2800 /* index.html in Resources */,
 				848EB7FC22C1B7E300E4C549 /* LaunchScreen.storyboard in Resources */,
-				95A6C96F231411F0006F37A4 /* main.css in Resources */,
-				95A6C96E231411F0006F37A4 /* index.html in Resources */,
 				95A6C97423141578006F37A4 /* sample.md in Resources */,
-				95F444302333AE1100574BE6 /* main.js in Resources */,
+				95ED063C23490D8400DB2800 /* main.css in Resources */,
+				95ED063B23490D8400DB2800 /* main.js in Resources */,
 				848EB7F922C1B7E300E4C549 /* Assets.xcassets in Resources */,
 				848EB7F722C1B7E200E4C549 /* Main.storyboard in Resources */,
 			);
