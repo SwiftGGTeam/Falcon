@@ -93,7 +93,7 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     // MARK: - Gesture
     
     @objc private func showDetailPage() {
-        addPullUpController(detailVC, initialStickyPointOffset: UIScreen.main.bounds.height - 44, animated: true)
+        addPullUpController(detailVC, initialStickyPointOffset: Layout.SCREEN_HEIGHT - navbarHeight, animated: true)
     }
     
 }
@@ -121,15 +121,14 @@ extension GGTalkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let vm = viewModel?.datas[safe: indexPath.row] as? TalkItemViewModel {
-            let progressModel = TalkProgressViewModel()
-            // TODO: - 统一 TalkProgressViewModel 属性，增加 convenience init
-            progressModel.title = vm.title
-//            progressModel.duration = vm.duration
+            // 跳转详情页
+            detailVC.viewModel = vm
+            showDetailPage()
+            // 更新底部进度条
+            let progressModel = TalkProgressViewModel(with: vm)
             talkProgressView.viewModel = progressModel
             talkProgressView.isHidden = false
         }
-        // TODO: - 需要加对应的 move 操作
-        showDetailPage()
     }
     
 }
