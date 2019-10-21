@@ -90,10 +90,19 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         }
     }
     
-    // MARK: - Gesture
+    // MARK: - Transition
+    
+    private var transitionDelegate: HalfModalTransitioningDelegate?
+    private var backgroundView = UIView().then {
+        $0.frame = UIScreen.main.bounds
+        $0.backgroundColor = UIColor(white: 0, alpha: 0.7)
+    }
     
     @objc private func showDetailPage() {
-        addPullUpController(detailVC, initialStickyPointOffset: Layout.SCREEN_HEIGHT - navbarHeight, animated: true)
+        transitionDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: detailVC)
+        detailVC.modalPresentationStyle = .custom
+        detailVC.transitioningDelegate = transitionDelegate
+        present(detailVC, animated: true, completion: nil)
     }
     
 }

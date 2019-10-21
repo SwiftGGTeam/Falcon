@@ -23,7 +23,6 @@
 		6D51A60C235813680046615A /* TalkDetailProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D51A60B235813680046615A /* TalkDetailProgressView.swift */; };
 		6D51A60E2358930C0046615A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D51A60D2358930C0046615A /* UIViewController+.swift */; };
 		6D51A610235893EB0046615A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D51A60F235893EB0046615A /* Layout.swift */; };
-		6D794414233DAF3000F09357 /* PullUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D794413233DAF3000F09357 /* PullUpViewController.swift */; };
 		6DD60B052329F8A90015A79F /* TalkItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B042329F8A90015A79F /* TalkItemViewModel.swift */; };
 		6DD60B072329F9DA0015A79F /* GGTalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */; };
 		6DD60B09232A213E0015A79F /* TalkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B08232A213E0015A79F /* TalkListViewModel.swift */; };
@@ -31,6 +30,10 @@
 		6DD60B0D232F362A0015A79F /* TalkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */; };
 		6DD60B0F232F67CE0015A79F /* TalkBottomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B0E232F67CE0015A79F /* TalkBottomProgressView.swift */; };
 		6DD60B11232F6E560015A79F /* TalkProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD60B10232F6E560015A79F /* TalkProgressViewModel.swift */; };
+		6DECD4D6235D9F6A004E5D1C /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DECD4D1235D9F6A004E5D1C /* HalfModalPresentationController.swift */; };
+		6DECD4D7235D9F6A004E5D1C /* HalfModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DECD4D3235D9F6A004E5D1C /* HalfModalInteractiveTransition.swift */; };
+		6DECD4D8235D9F6A004E5D1C /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DECD4D4235D9F6A004E5D1C /* HalfModalTransitionAnimator.swift */; };
+		6DECD4D9235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DECD4D5235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift */; };
 		84506BF722DC16220069717E /* FalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF622DC16220069717E /* FalcViewController.swift */; };
 		84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BF922DC16D90069717E /* UIColor+falc.swift */; };
 		84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84506BFC22DC17560069717E /* HomeViewModel.swift */; };
@@ -80,7 +83,6 @@
 		6D51A60B235813680046615A /* TalkDetailProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailProgressView.swift; sourceTree = "<group>"; };
 		6D51A60D2358930C0046615A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		6D51A60F235893EB0046615A /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		6D794413233DAF3000F09357 /* PullUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUpViewController.swift; sourceTree = "<group>"; };
 		6DD60B042329F8A90015A79F /* TalkItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkItemViewModel.swift; sourceTree = "<group>"; };
 		6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTalkViewController.swift; sourceTree = "<group>"; };
 		6DD60B08232A213E0015A79F /* TalkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkListViewModel.swift; sourceTree = "<group>"; };
@@ -88,6 +90,10 @@
 		6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailViewController.swift; sourceTree = "<group>"; };
 		6DD60B0E232F67CE0015A79F /* TalkBottomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBottomProgressView.swift; sourceTree = "<group>"; };
 		6DD60B10232F6E560015A79F /* TalkProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkProgressViewModel.swift; sourceTree = "<group>"; };
+		6DECD4D1235D9F6A004E5D1C /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		6DECD4D3235D9F6A004E5D1C /* HalfModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalInteractiveTransition.swift; sourceTree = "<group>"; };
+		6DECD4D4235D9F6A004E5D1C /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
+		6DECD4D5235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		84506BF622DC16220069717E /* FalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcViewController.swift; sourceTree = "<group>"; };
 		84506BF922DC16D90069717E /* UIColor+falc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+falc.swift"; sourceTree = "<group>"; };
 		84506BFC22DC17560069717E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -254,9 +260,43 @@
 			children = (
 				6DD60B062329F9DA0015A79F /* GGTalkViewController.swift */,
 				6DD60B0C232F362A0015A79F /* TalkDetailViewController.swift */,
-				6D794413233DAF3000F09357 /* PullUpViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6DECD4CE235D9F2C004E5D1C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6DECD4CF235D9F56004E5D1C /* HalfModalVC */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		6DECD4CF235D9F56004E5D1C /* HalfModalVC */ = {
+			isa = PBXGroup;
+			children = (
+				6DECD4D0235D9F6A004E5D1C /* Presentation */,
+				6DECD4D2235D9F6A004E5D1C /* Transitioning */,
+			);
+			path = HalfModalVC;
+			sourceTree = "<group>";
+		};
+		6DECD4D0235D9F6A004E5D1C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				6DECD4D1235D9F6A004E5D1C /* HalfModalPresentationController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		6DECD4D2235D9F6A004E5D1C /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				6DECD4D3235D9F6A004E5D1C /* HalfModalInteractiveTransition.swift */,
+				6DECD4D4235D9F6A004E5D1C /* HalfModalTransitionAnimator.swift */,
+				6DECD4D5235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift */,
+			);
+			path = Transitioning;
 			sourceTree = "<group>";
 		};
 		84506BF522DC15BD0069717E /* Controller */ = {
@@ -326,6 +366,7 @@
 				848EB81422C2F0C900E4C549 /* Core */,
 				848EB81322C2F0B900E4C549 /* Config */,
 				848EB81222C2F0AC00E4C549 /* Module */,
+				6DECD4CE235D9F2C004E5D1C /* Common */,
 				848EB7F822C1B7E300E4C549 /* Assets.xcassets */,
 				848EB7FA22C1B7E300E4C549 /* LaunchScreen.storyboard */,
 				848EB7FD22C1B7E300E4C549 /* Info.plist */,
@@ -623,14 +664,16 @@
 				10FD47EA230BA069007BE72B /* EventViewModel.swift in Sources */,
 				848EB7F222C1B7E200E4C549 /* AppDelegate.swift in Sources */,
 				6DD60B052329F8A90015A79F /* TalkItemViewModel.swift in Sources */,
+				6DECD4D6235D9F6A004E5D1C /* HalfModalPresentationController.swift in Sources */,
 				848EB81F22C3CCD500E4C549 /* FalcTabBarController.swift in Sources */,
+				6DECD4D7235D9F6A004E5D1C /* HalfModalInteractiveTransition.swift in Sources */,
 				104F4DDE22EC34A600F22A4E /* ShopItemTableViewCell.swift in Sources */,
-				6D794414233DAF3000F09357 /* PullUpViewController.swift in Sources */,
 				6DD60B072329F9DA0015A79F /* GGTalkViewController.swift in Sources */,
 				6D51A60C235813680046615A /* TalkDetailProgressView.swift in Sources */,
 				84506BFA22DC16D90069717E /* UIColor+falc.swift in Sources */,
 				84506BFD22DC17560069717E /* HomeViewModel.swift in Sources */,
 				95A6C966231410BA006F37A4 /* ArticleViewModel.swift in Sources */,
+				6DECD4D8235D9F6A004E5D1C /* HalfModalTransitionAnimator.swift in Sources */,
 				84506C0022DC1AAF0069717E /* HomeItemTableViewCell.swift in Sources */,
 				848EB81922C2F27000E4C549 /* FalcView.swift in Sources */,
 				84506C0422DC26870069717E /* UIFont+falc.swift in Sources */,
@@ -646,6 +689,7 @@
 				6DD60B09232A213E0015A79F /* TalkListViewModel.swift in Sources */,
 				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
 				6D51A60E2358930C0046615A /* UIViewController+.swift in Sources */,
+				6DECD4D9235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift in Sources */,
 				6DD60B0B232A228F0015A79F /* TalkItemCell.swift in Sources */,
 				95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */,
 				6D51A610235893EB0046615A /* Layout.swift in Sources */,
