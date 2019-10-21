@@ -40,6 +40,7 @@ class TalkDetailViewController: PullUpController<TalkItemViewModel> {
         super.initialViews()
         view.backgroundColor = .white
         progressView.frame = CGRect(x: 0, y: 0, width: Layout.SCREEN_WIDTH, height: 200)
+        progressView.layoutSubviews()
         webview.frame = CGRect(x: 0, y: 200, width: Layout.SCREEN_WIDTH, height: Layout.SCREEN_HEIGHT - 200 - navbarHeight)
         view.addSubview(progressView)
         view.addSubview(webview)
