@@ -37,11 +37,13 @@ class HomeViewController: FalcViewController<HomeViewModel> {
     override func initialDatas() {
         super.initialDatas()
         viewModel = HomeViewModel()
+        viewModel?.vmDelegate = self
+        viewModel?.hvmDelegate = self
     }
     
     override func initialViews() {
         super.initialViews()
-        self.view.backgroundColor = .sgBackgroundColor
+        self.view.backgroundColor = .falcBackgroundColor
         view.addSubview(tableView)
         tableView.refreshControl = refreshControl
     }
@@ -54,10 +56,15 @@ class HomeViewController: FalcViewController<HomeViewModel> {
         }
     }
     
+    override func updateViews() {
+        super.updateViews()
+        tableView.reloadData()
+    }
+    
     // MARK: - View Methods
     
     @objc private func refreshArticlesData(_ sender: Any) {
-        print("Refresh")
+        viewModel?.refreshData()
     }
     
 }
@@ -78,6 +85,14 @@ extension HomeViewController: UITableViewDataSource {
         return viewModel?.datas.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let count = viewModel?.datas.count else { return }
+        let lastElement = count - 1
+        if indexPath.row == lastElement {
+            viewModel?.fetchData()
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -85,11 +100,11 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let vm = viewModel?.datas[safe: indexPath.row] as? HomeItemTableViewCellModel else { return }
-        if let url = URL(string: vm.articleUrlString) {
+        if let id = vm.data?.id {
             let articleViewController = ArticleViewController()
-            let viewModel = ArticleViewModel()
-            viewModel.articleUrlString = url.absoluteString
-            articleViewController.viewModel = viewModel
+            let articleViewModel = ArticleViewModel()
+            articleViewModel.id = id
+            articleViewController.viewModel = articleViewModel
             articleViewController.hidesBottomBarWhenPushed = true
             guard let naviController = self.navigationController else { return }
             naviController.pushViewController(articleViewController)
@@ -98,3 +113,20 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
+extension HomeViewController: ViewModelDelegate {
+    
+    func updateViewAfterChangeData() {
+        updateViews()
+        updateLayouts()
+    }
+    
+}
+extension HomeViewController: HomeViewModelDelegate {
+    
+    func stopRefresh() {
+        if self.refreshControl.isRefreshing == true {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+}

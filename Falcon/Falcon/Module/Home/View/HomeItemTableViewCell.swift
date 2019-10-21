@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Then
+import SnapKit
 
 class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     
@@ -17,19 +17,34 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     }()
     
     private var titleLabel: UILabel = {
-        var label = UILabel().then {
-            $0.textColor = UIColor.sgBlackColor
-            $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        }
+        var label = UILabel()
+        label.textColor = UIColor.falcBlackColor
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return label
+    }()
+    
+    private var descView: UIStackView = {
+        var stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.alignment = .leading
+        return stackView
     }()
     
     private var descLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.sgDarkGrayColor
+        label.textColor = UIColor.falcDarkGrayColor
         label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         return label
+    }()
+    
+    private var descImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.cornerRadius = 5
+        return imageView
     }()
     
     lazy private var tagButton: UIButton = {
@@ -41,27 +56,31 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
         button.contentEdgeInsets.left = 6
         button.contentEdgeInsets.right = 6
         button.layer.cornerRadius = 2
+        button.isEnabled = false
         return button
     }()
     
     private var timeLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.sgLightGrayColor
+        label.textColor = UIColor.falcLightGrayColor
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         return label
     }()
     
     private var lineView: UIView = {
         var view = UIView()
-        view.backgroundColor = UIColor.sgBackgroundColor
+        view.backgroundColor = UIColor.falcLineColor
         return view
     }()
     
     override func initialViews() {
         super.initialViews()
+        [descLabel, descImageView].forEach {
+            descView.addArrangedSubview($0)
+        }
         addSubview(bakView)
-        [titleLabel, descLabel, tagButton, timeLabel, lineView].forEach {
+        [titleLabel, descView, tagButton, timeLabel, lineView].forEach {
             bakView.addSubview($0)
         }
     }
@@ -79,15 +98,19 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
             make.trailing.equalToSuperview().offset(-16)
         }
         
-        descLabel.snp.makeConstraints { make in
-            make.leading.equalTo(titleLabel)
-            make.trailing.equalTo(titleLabel)
+        descView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        descImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(75)
         }
         
         tagButton.snp.makeConstraints { make in
-            make.top.equalTo(descLabel.snp.bottom).offset(10)
-            make.leading.equalTo(descLabel)
+            make.top.equalTo(descView.snp.bottom).offset(10)
+            make.leading.equalTo(descView)
             make.bottom.equalToSuperview().offset(-20)
             make.height.equalTo(21)
         }
@@ -105,20 +128,57 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     
     override func updateViews() {
         super.updateViews()
-        guard let viewModel = viewModel else { return }
-        titleLabel.text = viewModel.titleText
-        descLabel.text = viewModel.descText
-        tagButton.setTitle(viewModel.authorText.uppercased(), for: .normal)
-        timeLabel.text = viewModel.timeText
+        guard let viewModel = viewModel,
+            let article = viewModel.data else { return }
+        titleLabel.text = article.title
+        if let preface = article.preface {
+            var briefPreface = ""
+            if preface.count > 140 {
+                briefPreface = preface[safe: 0..<140] ?? ""
+            } else {
+                briefPreface = preface
+            }
+            descLabel.text = briefPreface
+        }
+        
+        tagButton.setTitle(article.category?.uppercased(), for: .normal)
+        if var dateString = article.publishDate {
+            if dateString.contains("-") {
+                dateString = dateString.replacingOccurrences(of: "-", with: ".")
+            }
+            timeLabel.text = dateString
+        }
+        if let imageURL = article.imageURL,
+            imageURL != "" {
+            descView.addArrangedSubview(descImageView)
+            descImageView.isHidden = false
+            let url = URL(string: imageURL)
+            
+//            descImageView.kf.setImage(
+//                with: url,
+//                placeholder: UIImage(named: "placeholder"),
+//                options: [
+//                    .cacheOriginalImage
+//                ])
+//            {
+//                result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
+            descImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+        } else {
+            descView.removeArrangedSubview(descImageView)
+            descImageView.isHidden = true
+        }
     }
+    
 }
 
 
-class HomeItemTableViewCellModel: FalcViewModel<NSObject> {
-    public var titleText: String = ""
-    public var descText: String = ""
-    public var tagText: String = ""
-    public var authorText: String = ""
-    public var timeText: String = ""
-    public var articleUrlString: String = ""
+class HomeItemTableViewCellModel: FalcViewModel<ArticleModel> {
+    var imageLink: String?
 }

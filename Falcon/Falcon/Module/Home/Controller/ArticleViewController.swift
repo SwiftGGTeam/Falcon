@@ -15,12 +15,34 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
     lazy private var markdownView: MarkdownView = { [unowned self] in
         let markdownView = MarkdownView()
         markdownView.delegate = self
+        if #available(iOS 13.0, *) {
+            markdownView.backgroundColor = .systemBackground
+        }
         return markdownView
     }()
     
+    private var progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.progressTintColor = UIColor.sgMainTintColor
+        progressView.trackTintColor = UIColor.sgLightGrayColor
+        return progressView
+    }()
+    
+    override func initialDatas() {
+        super.initialDatas()
+        viewModel?.vmDelegate = self
+        viewModel?.fetchData()
+        progressView.progress = 0.3
+        progressView.setProgress(progressView.progress, animated: true)
+    }
+    
     override func initialViews() {
         super.initialViews()
-        view.addSubview(markdownView)
+        self.view.backgroundColor = .white
+        [markdownView, progressView].forEach {
+            view.addSubview($0)
+        }
+//        markdownView.addSubview()
     }
     
     override func initialLayouts() {
@@ -29,19 +51,29 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
         markdownView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        progressView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            make.height.equalTo(2)
+        }
     }
     
     override func updateViews() {
         super.updateViews()
         
         guard let viewModel = viewModel else { return }
-        //        let url = viewModel.articleUrlString
         
-        let path = Bundle.main.path(forResource: "sample", ofType: "md")!
-        let url = URL(fileURLWithPath: path)
-        let markdown = try! String(contentsOf: url, encoding: String.Encoding.utf8)
-        viewModel.markdown = markdown
-        markdownView.viewModel = viewModel
+        let markdownViewModel = MarkdownViewModel()
+        markdownViewModel.markdown = viewModel.data?.body
+        markdownViewModel.isShowImage = true
+        markdownViewModel.canTouchImage = true
+        markdownView.viewModel = markdownViewModel
+        
+        if progressView.progress == 0.3 {
+            progressView.progress = 0.8
+            progressView.setProgress(progressView.progress, animated: true)
+        }
     }
 }
 
@@ -49,6 +81,9 @@ extension ArticleViewController: MarkdownViewDelegate {
     
     func didFinishRendering(_ markdownView: MarkdownView, height: CGFloat) {
         print("Markdown did finish rendering, the height is", height)
+        progressView.progress = 1.0
+        progressView.setProgress(progressView.progress, animated: true)
+        progressView.isHidden = true
     }
     
     func onTouchLink(_ markdownView: MarkdownView, request: URLRequest) -> Bool {
@@ -58,7 +93,7 @@ extension ArticleViewController: MarkdownViewDelegate {
             return false
         } else if url.scheme == "https" {
             let safariController = SFSafariViewController(url: url)
-            safariController.preferredBarTintColor = UIColor.sgNaviColor
+            safariController.preferredBarTintColor = UIColor.falcNaviBackColor
             safariController.preferredControlTintColor = UIColor.sgMainTintColor
             self.present(safariController, animated: true, completion: nil)
             //            naviController.pushViewController(safari, animated: true)
@@ -66,6 +101,23 @@ extension ArticleViewController: MarkdownViewDelegate {
         } else {
             return false
         }
+    }
+    
+    func onTouchImage(_ markdownView: MarkdownView, url: URL) -> Bool {
+        print(url)
+        let imageViewerController = ArticleImageViewerController()
+        imageViewerController.imageUrl = url
+        navigationController?.pushViewController(imageViewerController, animated: true)
+        return true
+    }
+    
+}
+
+extension ArticleViewController: ViewModelDelegate {
+    
+    func updateViewAfterChangeData() {
+        updateViews()
+        updateLayouts()
     }
     
 }
