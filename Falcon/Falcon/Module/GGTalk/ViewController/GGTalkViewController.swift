@@ -52,7 +52,7 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
     override func initialViews() {
         super.initialViews()
-        self.view.backgroundColor = .sgBackgroundColor
+        self.view.backgroundColor = .falcBackgroundColor
         view.addSubview(tableView)
         view.addSubview(talkProgressView)
         tableView.refreshControl = refreshControl

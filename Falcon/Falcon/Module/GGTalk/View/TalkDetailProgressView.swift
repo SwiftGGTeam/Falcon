@@ -23,7 +23,7 @@ class TalkDetailProgressView: FalcView<TalkItemViewModel> {
     }
     
     private let timeLabel = UILabel().then {
-        $0.textColor = UIColor.sgLightGrayColor
+        $0.textColor = UIColor.falcLightGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
@@ -32,7 +32,7 @@ class TalkDetailProgressView: FalcView<TalkItemViewModel> {
     }
     
     private let progressView = UIProgressView(progressViewStyle: .default).then {
-        $0.progressTintColor = .sgMainTintColor
+        $0.progressTintColor = .falcBlackColor
         $0.trackTintColor = UIColor(red: 232 / 255.0, green: 232 / 255.0, blue: 232 / 255.0, alpha: 1.0)
     }
     

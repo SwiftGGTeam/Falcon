@@ -14,13 +14,13 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
     private let backView = UIView()
     
     private let titleLabel = UILabel().then {
-        $0.textColor = UIColor.sgBlackColor
+        $0.textColor = UIColor.falcBlackColor
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     private let descLabel = UILabel().then {
         $0.numberOfLines = 0
-        $0.textColor = UIColor.sgDarkGrayColor
+        $0.textColor = UIColor.falcDarkGrayColor
         $0.font = UIFont.systemFont(ofSize: 13, weight: .medium)
     }
     
@@ -30,18 +30,18 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
     
     private let durationLabel = UILabel().then {
         $0.textAlignment = .left
-        $0.textColor = UIColor.sgLightGrayColor
+        $0.textColor = UIColor.falcLightGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
     private let timeLabel = UILabel().then {
         $0.textAlignment = .right
-        $0.textColor = UIColor.sgLightGrayColor
+        $0.textColor = UIColor.falcLightGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
     private var lineView = UIView().then {
-        $0.backgroundColor = UIColor.sgBackgroundColor
+        $0.backgroundColor = UIColor.falcBackgroundColor
     }
     
     override func initialViews() {

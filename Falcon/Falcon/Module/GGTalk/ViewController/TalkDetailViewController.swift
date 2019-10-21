@@ -58,7 +58,6 @@ class TalkDetailViewController: FalcViewController<TalkItemViewModel>, HalfModal
     
     override func initialViews() {
         super.initialViews()
-        view.backgroundColor = .white
         view.addSubview(progressView)
         view.addSubview(titleLabel)
         view.addSubview(webview)
