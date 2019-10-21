@@ -13,7 +13,8 @@ import Alamofire
 
 class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
-    let talkListVM = TalkListViewModel()
+    private let talkListVM = TalkListViewModel()
+    private lazy var detailVC = TalkDetailViewController()
     
     lazy private var refreshControl = UIRefreshControl().then { [unowned self] in
         $0.tintColor = UIColor.sgMainTintColor
@@ -89,6 +90,21 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
         }
     }
     
+    // MARK: - Transition
+    
+    private var transitionDelegate: HalfModalTransitioningDelegate?
+    private var backgroundView = UIView().then {
+        $0.frame = UIScreen.main.bounds
+        $0.backgroundColor = UIColor(white: 0, alpha: 0.7)
+    }
+    
+    @objc private func showDetailPage() {
+        transitionDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: detailVC)
+        detailVC.modalPresentationStyle = .custom
+        detailVC.transitioningDelegate = transitionDelegate
+        present(detailVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension GGTalkViewController: UITableViewDataSource {
@@ -114,14 +130,14 @@ extension GGTalkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let vm = viewModel?.datas[safe: indexPath.row] as? TalkItemViewModel {
-            let progressModel = TalkProgressViewModel()
-            // TODO: - 统一 TalkProgressViewModel 属性，增加 convenience init
-            progressModel.title = vm.title
-//            progressModel.duration = vm.duration
+            // 跳转详情页
+            detailVC.viewModel = vm
+            showDetailPage()
+            // 更新底部进度条
+            let progressModel = TalkProgressViewModel(with: vm)
             talkProgressView.viewModel = progressModel
             talkProgressView.isHidden = false
         }
     }
     
 }
-
