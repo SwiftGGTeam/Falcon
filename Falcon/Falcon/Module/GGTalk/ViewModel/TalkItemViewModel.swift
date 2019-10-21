@@ -21,7 +21,6 @@ class TalkItemViewModel: FalcViewModel<NSObject> {
     public var duration = ""
     public var episode = 0
     public var link = ""
-    public var detailUrl = ""
     public var guid = ""
     /// 详情页内容（h5格式）
     public var summary = ""
