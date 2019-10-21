@@ -38,7 +38,7 @@ class HomeViewModel: FalcViewModel<ViewModel> {
     
     func fetchData() {
         Alamofire.request(Router.articles(currentPage, pageSize)).responseObject {
-            [unowned self] (response: DataResponse<GeneralResponse<HomeModel>>) in
+            [weak self] (response: DataResponse<GeneralResponse<HomeModel>>) in
             let generalResponse = response.result.value
             guard let success = generalResponse?.success, success else {
                 print("General Response Error! \(generalResponse?.message ?? "")")
@@ -55,6 +55,7 @@ class HomeViewModel: FalcViewModel<ViewModel> {
                 cellModel.data = article
                 cellModelArray.append(cellModel)
             }
+            guard let self = self else { return }
             self.hvmDelegate?.stopRefresh()
             self.datas.append(contentsOf: cellModelArray)
             self.currentPage += 1

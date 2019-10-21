@@ -23,7 +23,7 @@ class TalkDetailProgressView: FalcView<TalkItemViewModel> {
     }
     
     private let timeLabel = UILabel().then {
-        $0.textColor = UIColor.sgLightGrayColor
+        $0.textColor = UIColor.falcLightGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     

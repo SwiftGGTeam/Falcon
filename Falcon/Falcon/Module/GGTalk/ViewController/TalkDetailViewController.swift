@@ -22,7 +22,7 @@ class TalkDetailViewController: FalcViewController<TalkItemViewModel>, HalfModal
         super.updateViews()
         progressView.viewModel = viewModel
         if let url = viewModel?.summary {
-            // TODO: - 如果有较长的 url 时会左右滚动
+            // TODO: - 如果有较长的 url 时会左右滚动 + webview 适配暗黑模式
             webview.loadHTMLString(url, baseURL: nil)
         }
     }
@@ -38,7 +38,7 @@ class TalkDetailViewController: FalcViewController<TalkItemViewModel>, HalfModal
     
     private let webview: WKWebView = {
         // js脚本
-        let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta); document.createElement('span'); span.setAttribute('style', 'word-break:break-all'); document.getElementsByTagName('head')[0].appendChild(span);"
+        let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, shrink-to-fit=YES'); document.getElementsByTagName('head')[0].appendChild(meta);"
         // 注入
         let wkUScript = WKUserScript(source: jScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         let wkUController = WKUserContentController()
@@ -53,12 +53,13 @@ class TalkDetailViewController: FalcViewController<TalkItemViewModel>, HalfModal
         // webview config
         let webview = WKWebView(frame: .zero, configuration: wkWebConfig)
         webview.scrollView.showsVerticalScrollIndicator = false
+        webview.backgroundColor = .falcBackgroundColor
         return webview
     }()
     
     override func initialViews() {
         super.initialViews()
-        view.backgroundColor = .white
+        view.backgroundColor = .falcBackgroundColor
         view.addSubview(progressView)
         view.addSubview(titleLabel)
         view.addSubview(webview)
