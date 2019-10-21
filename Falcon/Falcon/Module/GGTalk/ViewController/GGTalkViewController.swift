@@ -22,7 +22,7 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     }
     
     lazy private var tableView = UITableView().then { [unowned self] in
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .falcBackgroundColor
         $0.delegate = self
         $0.dataSource = self
         $0.separatorStyle = .none

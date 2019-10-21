@@ -47,7 +47,7 @@ DEPENDENCIES:
   - Then (~> 2.5.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - CocoaLumberjack
@@ -73,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 39df1a9a9203fa4b1c182e17072adb12c1d8d18d
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

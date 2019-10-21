@@ -41,7 +41,7 @@ class TalkItemCell: FalcTableViewCell<TalkItemViewModel> {
     }
     
     private var lineView = UIView().then {
-        $0.backgroundColor = UIColor.falcBackgroundColor
+        $0.backgroundColor = UIColor.falcLineColor
     }
     
     override func initialViews() {
