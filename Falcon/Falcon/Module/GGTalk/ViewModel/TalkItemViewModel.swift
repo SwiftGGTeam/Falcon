@@ -21,9 +21,10 @@ class TalkItemViewModel: FalcViewModel<NSObject> {
     public var duration = ""
     public var episode = 0
     public var link = ""
-    public var detailUrl = ""
     public var guid = ""
+    /// 详情页内容（h5格式）
     public var summary = ""
+    /// 文章头像图片 url
     public var image = ""
     public var keywords = ""
     public var explicit = ""
@@ -34,6 +35,8 @@ class TalkItemViewModel: FalcViewModel<NSObject> {
         if let desc = node["description"].element?.text { self.desc = desc }
         if let date = node["pubDate"].element?.text { self.pubDate = date }
         if let duration = node["duration"].element?.text { self.duration = duration }
+        if let image = node["image"].element?.attribute(by: "href")?.text { self.image = image }
+        if let summary = node["summary"].element?.text { self.summary = summary }
     }
     
 }

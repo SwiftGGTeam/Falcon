@@ -18,12 +18,12 @@ class TalkBottomProgressView: FalcView<TalkProgressViewModel> {
     }
     
     private let titleLabel = UILabel().then {
-        $0.textColor = UIColor.sgDarkGrayColor
+        $0.textColor = UIColor.falcDarkGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
     private let timeLabel = UILabel().then {
-        $0.textColor = UIColor.sgLightGrayColor
+        $0.textColor = UIColor.falcLightGrayColor
         $0.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }
     
