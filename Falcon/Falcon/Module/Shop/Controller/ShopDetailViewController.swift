@@ -143,7 +143,7 @@ class ShopDetailViewController: FalcViewController<ShopDetailViewModel>, BasicVi
     @objc private func clickBuyAction(_ sender: Any) {
         guard let shopGoodsModel = viewModel?.data as? ShopGoodsModel, let urlString = shopGoodsModel.purchaseURL, let url = URL(string: urlString) else { return }
         let safariController = SFSafariViewController(url: url)
-        safariController.preferredBarTintColor = UIColor.sgNaviColor
+        safariController.preferredBarTintColor = UIColor.falcNaviBackColor
         safariController.preferredControlTintColor = UIColor.sgMainTintColor
         self.present(safariController, animated: true, completion: nil)
     }
@@ -170,7 +170,7 @@ extension ShopDetailViewController: MarkdownViewDelegate {
             return false
         } else if url.scheme == "https" {
             let safariController = SFSafariViewController(url: url)
-            safariController.preferredBarTintColor = UIColor.sgNaviColor
+            safariController.preferredBarTintColor = UIColor.falcNaviBackColor
             safariController.preferredControlTintColor = UIColor.sgMainTintColor
             self.present(safariController, animated: true, completion: nil)
             return false

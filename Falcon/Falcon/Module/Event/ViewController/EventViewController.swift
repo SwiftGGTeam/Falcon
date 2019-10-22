@@ -85,7 +85,7 @@ extension EventViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vm = viewModel?.datas[safe: indexPath.row] as? EventItemCollectionViewCellModel, let urlString = vm.registerURL, let url = URL(string: urlString) else { return }
         let safariController = SFSafariViewController(url: url)
-        safariController.preferredBarTintColor = UIColor.sgNaviColor
+        safariController.preferredBarTintColor = UIColor.falcNaviBackColor
         safariController.preferredControlTintColor = UIColor.sgMainTintColor
         self.present(safariController, animated: true, completion: nil)
     }

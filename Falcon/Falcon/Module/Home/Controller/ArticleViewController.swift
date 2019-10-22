@@ -15,9 +15,11 @@ class ArticleViewController: FalcViewController<ArticleViewModel> {
     lazy private var markdownView: MarkdownView = { [unowned self] in
         let markdownView = MarkdownView()
         markdownView.delegate = self
+        #if compiler(>=5.1)
         if #available(iOS 13.0, *) {
             markdownView.backgroundColor = .systemBackground
         }
+        #endif
         return markdownView
     }()
     

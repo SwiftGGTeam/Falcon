@@ -17,6 +17,7 @@ extension UIColor {
     /// ViewController 背景色。正常为浅灰，黑暗模式为纯黑色。
     class var falcBackgroundColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -28,6 +29,9 @@ extension UIColor {
             } else {
                 return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     
@@ -43,6 +47,7 @@ extension UIColor {
     /// cell 标题黑色。正常为黑色，黑暗模式为白色。
     class var falcBlackColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -54,6 +59,9 @@ extension UIColor {
             } else {
                 return UIColor(white: 62.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(white: 62.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     
@@ -64,6 +72,7 @@ extension UIColor {
     /// cell 详情文本灰色。正常为灰色，黑暗模式为灰色。
     class var falcDarkGrayColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -75,6 +84,9 @@ extension UIColor {
             } else {
                 return UIColor(white: 102.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(white: 102.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     
@@ -85,6 +97,7 @@ extension UIColor {
     /// cell 时间文本浅灰色。正常为浅灰色，黑暗模式为浅灰色。
     class var falcLightGrayColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -96,12 +109,16 @@ extension UIColor {
             } else {
                 return UIColor(white: 180.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(white: 180.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     
     /// NavigationBar 背景色
     class var falcNaviBackColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -113,12 +130,16 @@ extension UIColor {
             } else {
                 return UIColor(white: 1.0, alpha: 0.68)
             }
+            #else
+            return UIColor(white: 1.0, alpha: 0.68)
+            #endif
         }
     }
     
     /// TabBar 背景色
     class var falcTabBackColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -130,12 +151,16 @@ extension UIColor {
             } else {
                 return UIColor(white: 1.0, alpha: 0.9)
             }
+            #else
+            return UIColor(white: 1.0, alpha: 0.9)
+            #endif
         }
     }
     
     /// NavigationBar 标题色
     class var falcNaviTitleBlackColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -147,12 +172,16 @@ extension UIColor {
             } else {
                 return UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 55.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(red: 45.0 / 255.0, green: 45.0 / 255.0, blue: 55.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     
     /// cell 分割线颜色
     class var falcLineColor: UIColor {
         get {
+            #if compiler(>=5.1)
             if #available(iOS 13.0, *) {
                 return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
                     if traitCollection.userInterfaceStyle == .dark {
@@ -164,6 +193,9 @@ extension UIColor {
             } else {
                 return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
             }
+            #else
+            return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+            #endif
         }
     }
     

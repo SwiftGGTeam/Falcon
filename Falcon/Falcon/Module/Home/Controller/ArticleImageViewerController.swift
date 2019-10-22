@@ -40,11 +40,15 @@ class ArticleImageViewerController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        #if compiler(>=5.1)
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
         } else {
             view.backgroundColor = .white
         }
+        #else
+        view.backgroundColor = .white
+        #endif
         view.addSubview(scrollView)
         
         [imageView, progressView].forEach {
