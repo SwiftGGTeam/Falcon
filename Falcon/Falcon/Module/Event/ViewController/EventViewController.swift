@@ -9,14 +9,22 @@
 import UIKit
 import SnapKit
 import SwifterSwift
+import SafariServices
 
 /// 活动模块
 class EventViewController: FalcViewController<EventViewModel> {
 
+    lazy private var refreshControl: UIRefreshControl = { [unowned self] in
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.tintColor = UIColor.sgMainTintColor
+        refreshControl.addTarget(self, action: #selector(refreshEventsData), for: .valueChanged)
+        return refreshControl
+    }()
+    
     lazy private var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: view.width - 20, height: 397)
+        flowLayout.itemSize = CGSize(width: view.width - 20, height: (view.width - 20) * (372 / 660))
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         flowLayout.minimumLineSpacing = 10
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -36,6 +44,7 @@ class EventViewController: FalcViewController<EventViewModel> {
     override func initialViews() {
         super.initialViews()
         view.addSubview(collectionView)
+        collectionView.refreshControl = refreshControl
     }
     
     override func initialLayouts() {
@@ -45,6 +54,18 @@ class EventViewController: FalcViewController<EventViewModel> {
             make.edges.equalToSuperview()
         }
     }
+    
+    override func updateViews() {
+        super.updateViews()
+        collectionView.reloadData()
+    }
+    
+    @objc private func refreshEventsData(_ sender: Any) {
+        viewModel?.fetchData { [unowned self] in
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
 }
 
 extension EventViewController: UICollectionViewDataSource {
@@ -59,6 +80,14 @@ extension EventViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.datas.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vm = viewModel?.datas[safe: indexPath.row] as? EventItemCollectionViewCellModel, let urlString = vm.registerURL, let url = URL(string: urlString) else { return }
+        let safariController = SFSafariViewController(url: url)
+        safariController.preferredBarTintColor = UIColor.falcNaviBackColor
+        safariController.preferredControlTintColor = UIColor.sgMainTintColor
+        self.present(safariController, animated: true, completion: nil)
     }
 }
 

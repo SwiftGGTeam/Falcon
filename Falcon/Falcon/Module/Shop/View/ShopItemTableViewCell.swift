@@ -10,6 +10,7 @@ import UIKit
 import SwifterSwift
 import Then
 import SDWebImage
+import ObjectMapper
 
 /// 商店列表商品 Cell
 class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
@@ -23,6 +24,21 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.cornerRadius = 5
+        
+        #if compiler(>=5.1)
+        if #available(iOS 13.0, *) {
+            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    imageView.alpha = 0.9
+                } else {
+                    imageView.alpha = 1
+                }
+            })
+        } else {
+            imageView.alpha = 1
+        }
+        #endif
+        
         return imageView
     }()
     
@@ -47,7 +63,10 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         var label = UILabel()
         label.text = "¥ 139"
         label.textColor = UIColor.white
+        label.backgroundColor = UIColor.sgMainTintColor
         label.font = UIFont.falcFont(size: 12, thick: .medium)
+        label.cornerRadius = 2
+
         return label
     }()
     
@@ -94,6 +113,12 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
             make.leading.equalTo(titleLabel)
             make.trailing.equalToSuperview().offset(-46)
         }
+        priceLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(goodsImage.snp.trailing).offset(5)
+            make.bottom.equalTo(goodsImage.snp.bottom).offset(5)
+            make.height.equalTo(23)
+        }
+        
         
         lineView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -111,14 +136,27 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
     }
 }
 
-class ShopItemTableViewCellModel: FalcViewModel<NSObject> {
+class ShopItemTableViewCellModel: FalcViewModel<NSObject>, Mappable {
+    public var id: Int = 0
     public var goodsImage: String = ""
     public var titleText: String = ""
     public var descText: String = ""
     public var priceText: String = ""
     public var price: Int = 0 {
         didSet {
-            priceText = "￥ \(price)"
+            priceText = "  ￥\(price)  "
         }
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        goodsImage <- map["imageURL"]
+        titleText <- map["name"]
+        descText <- map["preface"]
+        price <- map["price"]
     }
 }

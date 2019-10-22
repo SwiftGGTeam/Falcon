@@ -20,6 +20,7 @@ def extension_dependency
 end
 
 def debug_dependency
+  pod 'LookinServer', :configurations => ['Debug']
 end
 
 target 'Falcon' do

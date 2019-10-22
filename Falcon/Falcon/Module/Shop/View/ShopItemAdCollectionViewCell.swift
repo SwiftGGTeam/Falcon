@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 /// shop 模块顶部的优惠 cell
 class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionViewCellModel> {
@@ -23,6 +24,21 @@ class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionV
         imageView.clipsToBounds = true
         imageView.borderColor = UIColor(white: 102.0 / 255.0, alpha: 0.1)
         imageView.borderWidth = 1
+        
+        #if compiler(>=5.1)
+        if #available(iOS 13.0, *) {
+            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    imageView.alpha = 0.9
+                } else {
+                    imageView.alpha = 1
+                }
+            })
+        } else {
+            imageView.alpha = 1
+        }
+        #endif
+        
         return imageView
     }()
     
@@ -83,8 +99,27 @@ class ShopItemAdCollectionViewCell: FalcCollectionViewCell<ShopItemAdCollectionV
     
 }
 
-class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject> {
+class ShopItemAdCollectionViewCellModel: FalcViewModel<NSObject>, Mappable {
+    public var id: Int = 0
     public var goodsImage: String = ""
     public var typeText: String = ""
     public var titleText : String = ""
+    public var descText: String = ""
+    public var price: Int = 0 {
+        didSet {
+            typeText = "￥ \(price)"
+        }
+    }
+
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        goodsImage <- map["imageURL"]
+        titleText <- map["name"]
+        descText <- map["preface"]
+        price <- map["price"]
+    }
 }

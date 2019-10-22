@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import SnapKit
+import SwifterSwift
 
 /// 商店模块
 class ShopViewController: FalcViewController<ShopViewModel> {
 
+    lazy private var refreshControl: UIRefreshControl = { [unowned self] in
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.tintColor = UIColor.sgMainTintColor
+        refreshControl.addTarget(self, action: #selector(refreshEventsData), for: .valueChanged)
+        return refreshControl
+    }()
+    
     lazy private var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .sgBackgroundColor
@@ -44,6 +53,17 @@ class ShopViewController: FalcViewController<ShopViewModel> {
             make.edges.equalToSuperview()
         }
     }
+    
+    override func updateViews() {
+        super.updateViews()
+        tableView.reloadData()
+    }
+    
+    @objc private func refreshEventsData(_ sender: Any) {
+        viewModel?.fetchData { [unowned self] in
+            self.refreshControl.endRefreshing()
+        }
+    }
 }
 
 extension ShopViewController: UITableViewDataSource {
@@ -51,6 +71,10 @@ extension ShopViewController: UITableViewDataSource {
         if let vm = viewModel?.datas[safe: indexPath.row] as? ShopItemAdContainerTableViewCellModel {
             let cell = tableView.dequeueReusableCell(withClass: ShopItemAdContainerTableViewCell.self)
             cell.selectionStyle = .none
+            vm.didSelectHandler = { [unowned self] (collectView, indexPath) in
+                guard let goodsvm = vm.datas[safe: indexPath.row] as? ShopItemAdCollectionViewCellModel else { return }
+                self.pushGoodDetailViewControler(with: goodsvm.id, title: goodsvm.titleText)
+            }
             cell.viewModel = vm
             return cell
         } else if let vm = viewModel?.datas[safe: indexPath.row] as? ShopItemTableViewCellModel {
@@ -68,6 +92,20 @@ extension ShopViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let vm = viewModel?.datas[safe: indexPath.row] as? ShopItemTableViewCellModel {
+            self.pushGoodDetailViewControler(with: vm.id, title: vm.titleText)
+        }
+    }
+    
+    func pushGoodDetailViewControler(with id: Int, title: String) {
+        let goodsViewController = ShopDetailViewController()
+        let goodsViewModel = ShopDetailViewModel(id: id)
+        goodsViewModel.delegate = goodsViewController
+        goodsViewController.title = title
+        goodsViewController.viewModel = goodsViewModel
+        goodsViewController.hidesBottomBarWhenPushed = true
+        guard let naviController = self.navigationController else { return }
+        naviController.pushViewController(goodsViewController)
     }
 }
 

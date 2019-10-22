@@ -49,5 +49,9 @@ extension UIFont {
     class var sgTitle1: UIFont {
         return UIFont.systemFont(ofSize: 22.0, weight: .bold)
     }
+    
+    class var textStyle2: UIFont {
+        return UIFont.systemFont(ofSize: 14.0, weight: .medium)
+    }
 
 }

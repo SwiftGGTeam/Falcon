@@ -64,7 +64,7 @@ class HomeViewController: FalcViewController<HomeViewModel> {
     // MARK: - View Methods
     
     @objc private func refreshArticlesData(_ sender: Any) {
-        viewModel?.refreshData()
+        viewModel?.fetchData()
     }
     
 }
