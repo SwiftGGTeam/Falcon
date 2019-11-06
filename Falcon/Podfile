@@ -8,10 +8,7 @@ def basic_dependency
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'SDWebImage', '5.0.0-beta3'
   pod 'SWXMLHash', '~> 5.0.0'
-end
-
-def ui_dependency
-#  pod 'CYLTabBarController', '~> 1.28.0'
+  pod 'R.swift'
 end
 
 def extension_dependency
@@ -27,7 +24,6 @@ target 'Falcon' do
   use_frameworks!
 
   basic_dependency
-  ui_dependency
   extension_dependency
   debug_dependency
 

@@ -68,6 +68,8 @@
 		95ED063B23490D8400DB2800 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 95ED063823490D8400DB2800 /* main.js */; };
 		95ED063C23490D8400DB2800 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 95ED063923490D8400DB2800 /* main.css */; };
 		A3BAB3C2190F5029F705C64F /* Pods_Falcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */; };
+		D8691EA6237295A400A39A46 /* NSAttributedString+falc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8691EA5237295A400A39A46 /* NSAttributedString+falc.swift */; };
+		D8691EA92372992400A39A46 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8691EA82372992400A39A46 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,8 @@
 		A0C35EFB44B6796AA4283BB9 /* Pods-FalconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.release.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1565EFCB9161BCF7C06416F /* Pods-FalconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FalconTests.debug.xcconfig"; path = "Target Support Files/Pods-FalconTests/Pods-FalconTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6ACCC2D6C9DDCDAB5F730B3 /* Pods_Falcon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Falcon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8691EA5237295A400A39A46 /* NSAttributedString+falc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+falc.swift"; sourceTree = "<group>"; };
+		D8691EA82372992400A39A46 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +347,7 @@
 				84506C0122DC25260069717E /* Array+.swift */,
 				6D51A60D2358930C0046615A /* UIViewController+.swift */,
 				6D51A60F235893EB0046615A /* Layout.swift */,
+				D8691EA5237295A400A39A46 /* NSAttributedString+falc.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 		95A6C969231411B6006F37A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8691EA82372992400A39A46 /* R.generated.swift */,
 				95A6C96A231411E6006F37A4 /* Markdown */,
 			);
 			path = Resources;
@@ -535,6 +541,7 @@
 			buildConfigurationList = 848EB80B22C1B7E300E4C549 /* Build configuration list for PBXNativeTarget "Falcon" */;
 			buildPhases = (
 				2B737B86B811CCB3F56E3606 /* [CP] Check Pods Manifest.lock */,
+				D8691EA7237298E900A39A46 /* R.swift */,
 				848EB7EA22C1B7E200E4C549 /* Sources */,
 				848EB7EB22C1B7E200E4C549 /* Frameworks */,
 				848EB7EC22C1B7E200E4C549 /* Resources */,
@@ -710,6 +717,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FalconTests/Pods-FalconTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D8691EA7237298E900A39A46 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -753,11 +780,13 @@
 				84506BF722DC16220069717E /* FalcViewController.swift in Sources */,
 				945A882F235321DB0007083A /* ShopGoodsModel.swift in Sources */,
 				6DD60B09232A213E0015A79F /* TalkListViewModel.swift in Sources */,
+				D8691EA92372992400A39A46 /* R.generated.swift in Sources */,
 				848EB81722C2F1E100E4C549 /* FalcViewModel.swift in Sources */,
 				6D51A60E2358930C0046615A /* UIViewController+.swift in Sources */,
 				6DECD4D9235D9F6A004E5D1C /* HalfModalTransitioningDelegate.swift in Sources */,
 				6DD60B0B232A228F0015A79F /* TalkItemCell.swift in Sources */,
 				95A6C96023141061006F37A4 /* ArticleViewController.swift in Sources */,
+				D8691EA6237295A400A39A46 /* NSAttributedString+falc.swift in Sources */,
 				6D51A610235893EB0046615A /* Layout.swift in Sources */,
 				951CABD52327B03A0084CC42 /* ORMError.swift in Sources */,
 				951CABD72327B1BF0084CC42 /* Router.swift in Sources */,
