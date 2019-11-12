@@ -1,0 +1,12 @@
+/* 
+  FalLocalizedStrings.strings
+  Falcon
+
+  Created by Roc Zhang on 2019/11/6.
+  Copyright © 2019 Harry Duan. All rights reserved.
+*/
+
+"common-tab-articles-title" = "Articles";
+"common-tab-ggtalk-title" = "GGTalk";
+"common-tab-events-title" = "Events";
+"common-tab-shop-title" = "Shop";
