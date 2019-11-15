@@ -42,6 +42,7 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     override func initialDatas() {
         super.initialDatas()
         viewModel = talkListVM
+        viewModel?.vmDelegate = self    
         refreshDataFromServer()
     }
     
@@ -52,7 +53,9 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
     override func initialViews() {
         super.initialViews()
-        self.view.backgroundColor = .falcBackgroundColor
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        }
         view.addSubview(tableView)
         view.addSubview(talkProgressView)
         tableView.refreshControl = refreshControl
@@ -107,6 +110,8 @@ class GGTalkViewController: FalcViewController<TalkListViewModel> {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension GGTalkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,6 +130,8 @@ extension GGTalkViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
+
 extension GGTalkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -138,6 +145,17 @@ extension GGTalkViewController: UITableViewDelegate {
             talkProgressView.viewModel = progressModel
             talkProgressView.isHidden = false
         }
+    }
+    
+}
+
+// MARK: - ViewModelDelegate
+
+extension GGTalkViewController: ViewModelDelegate {
+    
+    func updateViewAfterChangeData() {
+        updateViews()
+        updateLayouts()
     }
     
 }

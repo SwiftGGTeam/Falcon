@@ -11,64 +11,65 @@ import SnapKit
 
 class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
     
-    private var bakView: UIView = {
-        var view = UIView()
+    private let bakView: UIView = {
+        let view = UIView()
         return view
     }()
     
-    private var titleLabel: UILabel = {
-        var label = UILabel()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
         label.textColor = UIColor.falcBlackColor
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = .sgHeadline
         return label
     }()
     
-    private var descView: UIStackView = {
-        var stackView = UIStackView()
+    private let descView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .leading
         return stackView
     }()
     
-    private var descLabel: UILabel = {
-        var label = UILabel()
+    private let descLabel: UILabel = {
+        let label = UILabel()
         label.numberOfLines = 0
         label.textColor = UIColor.falcDarkGrayColor
-        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        label.font = .sgSubhead
         return label
     }()
     
-    private var descImageView: UIImageView = {
+    private let descImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.cornerRadius = 5
         return imageView
     }()
     
-    lazy private var tagButton: UIButton = {
-        var button = UIButton(type: .custom)
-        button.backgroundColor = UIColor.sgMainTintColor
+    private let tagButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .sgMainTintColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
+        button.titleLabel?.font = .sgCaption1
         button.titleLabel?.textAlignment = .center
         button.contentEdgeInsets.left = 6
         button.contentEdgeInsets.right = 6
+        button.contentEdgeInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         button.layer.cornerRadius = 2
         button.isEnabled = false
         return button
     }()
     
-    private var timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.falcLightGrayColor
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .falcLightGrayColor
+        label.font = .sgFootnote
         return label
     }()
     
-    private var lineView: UIView = {
+    private let lineView: UIView = {
         var view = UIView()
         view.backgroundColor = UIColor.falcLineColor
         return view
@@ -109,10 +110,9 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
         }
         
         tagButton.snp.makeConstraints { make in
-            make.top.equalTo(descView.snp.bottom).offset(10)
+            make.top.equalTo(descView.snp.bottom).offset(15)
             make.leading.equalTo(descView)
             make.bottom.equalToSuperview().offset(-20)
-            make.height.equalTo(21)
         }
         
         timeLabel.snp.makeConstraints { make in
@@ -138,7 +138,7 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
             } else {
                 briefPreface = preface
             }
-            descLabel.text = briefPreface
+            descLabel.attributedText = NSAttributedString(string: briefPreface, attributes: [.paragraphStyle: NSParagraphStyle.falDescriptionParagraphStyle])
         }
         
         tagButton.setTitle(article.category?.uppercased(), for: .normal)
@@ -153,22 +153,6 @@ class HomeItemTableViewCell: FalcTableViewCell<HomeItemTableViewCellModel> {
             descView.addArrangedSubview(descImageView)
             descImageView.isHidden = false
             let url = URL(string: imageURL)
-            
-//            descImageView.kf.setImage(
-//                with: url,
-//                placeholder: UIImage(named: "placeholder"),
-//                options: [
-//                    .cacheOriginalImage
-//                ])
-//            {
-//                result in
-//                switch result {
-//                case .success(let value):
-//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-//                case .failure(let error):
-//                    print("Job failed: \(error.localizedDescription)")
-//                }
-//            }
             descImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
         } else {
             descView.removeArrangedSubview(descImageView)

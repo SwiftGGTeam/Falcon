@@ -10,48 +10,34 @@ import UIKit
 import Foundation
 
 extension UIFont {
-    enum Thickness: String {
-        case normal = ""
-        case thin = "-Thin"
-        case light = "-Light"
-        case semibold = "-Semibold"
-        case medium = "-Medium"
-    }
     
-    static func falcFont(size: CGFloat = 16, thick: Thickness = .normal) -> UIFont {
-        return UIFont(name: "SFProDisplay\(thick.rawValue)", size: size) ?? UIFont.systemFont(ofSize: size)
-    }
-    
-    class var textStyle: UIFont {
-        return UIFont.systemFont(ofSize: 22.0, weight: .bold)
+    class var sgTitle1: UIFont {
+        return UIFontMetrics(forTextStyle: .title1).scaledFont(for: .systemFont(ofSize: 22.0, weight: .bold))
     }
     
     class var sgHeadline: UIFont {
-        return UIFont.systemFont(ofSize: 16.0, weight: .semibold)
-    }
-    
-    class var sgCallout: UIFont {
-        return UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        return UIFontMetrics(forTextStyle: .headline).scaledFont(for: .systemFont(ofSize: 16.0, weight: .semibold))
     }
     
     class var sgSubhead: UIFont {
-        return UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        return UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 13.0, weight: .medium))
     }
     
     class var sgFootnote: UIFont {
-        return UIFont.systemFont(ofSize: 12.0, weight: .medium)
+        return UIFontMetrics(forTextStyle: .footnote).scaledFont(for: .systemFont(ofSize: 12.0, weight: .medium))
+    }
+    
+    /// Tag label
+    class var sgCaption1: UIFont {
+        return UIFontMetrics(forTextStyle: .caption1).scaledFont(for: .systemFont(ofSize: 10, weight: .semibold))
     }
     
     class var sgNaviTitle: UIFont {
-        return UIFont.systemFont(ofSize: 18.0, weight: .bold)
-    }
-
-    class var sgTitle1: UIFont {
-        return UIFont.systemFont(ofSize: 22.0, weight: .bold)
+        return UIFontMetrics(forTextStyle: .title2).scaledFont(for: .systemFont(ofSize: 18.0, weight: .bold))
     }
     
     class var textStyle2: UIFont {
-        return UIFont.systemFont(ofSize: 14.0, weight: .medium)
+        return UIFontMetrics(forTextStyle: .title2).scaledFont(for: .systemFont(ofSize: 14.0, weight: .medium))
     }
 
 }

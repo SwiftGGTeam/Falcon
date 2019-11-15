@@ -25,19 +25,19 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         imageView.contentMode = .scaleAspectFill
         imageView.cornerRadius = 5
         
-        #if compiler(>=5.1)
-        if #available(iOS 13.0, *) {
-            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
-                if traitCollection.userInterfaceStyle == .dark {
-                    imageView.alpha = 0.9
-                } else {
-                    imageView.alpha = 1
-                }
-            })
-        } else {
-            imageView.alpha = 1
-        }
-        #endif
+//        #if compiler(>=5.1)
+//        if #available(iOS 13.0, *) {
+//            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
+//                if traitCollection.userInterfaceStyle == .dark {
+//                    imageView.alpha = 0.9
+//                } else {
+//                    imageView.alpha = 1
+//                }
+//            })
+//        } else {
+//            imageView.alpha = 1
+//        }
+//        #endif
         
         return imageView
     }()
@@ -46,7 +46,7 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         var label = UILabel()
         label.text = "GGTalk 字幕合集书"
         label.textColor = UIColor.greyishBrown
-        label.font = UIFont.falcFont(size: 16, thick: .semibold)
+        label.font = .sgHeadline
         return label
     }()
     
@@ -55,7 +55,7 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         label.text = "包含 110 期节目的所有字幕合集，附赠 MM 手绘小鸡贴纸 2 张。还是麻辣味道。"
         label.numberOfLines = 0
         label.textColor = UIColor.sgDarkGrayColor
-        label.font = UIFont.falcFont(size: 13, thick: .medium)
+        label.font = .sgSubhead
         return label
     }()
     
@@ -64,7 +64,7 @@ class ShopItemTableViewCell: FalcTableViewCell<ShopItemTableViewCellModel> {
         label.text = "¥ 139"
         label.textColor = UIColor.white
         label.backgroundColor = UIColor.sgMainTintColor
-        label.font = UIFont.falcFont(size: 12, thick: .medium)
+        label.font = .sgFootnote
         label.cornerRadius = 2
 
         return label

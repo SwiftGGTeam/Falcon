@@ -43,7 +43,7 @@ class HomeViewController: FalcViewController<HomeViewModel> {
     
     override func initialViews() {
         super.initialViews()
-        self.view.backgroundColor = .falcBackgroundColor
+        title = "文章"
         view.addSubview(tableView)
         tableView.refreshControl = refreshControl
     }

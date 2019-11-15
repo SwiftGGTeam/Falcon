@@ -10,6 +10,20 @@ import Foundation
 import SWXMLHash
 
 class TalkListViewModel: FalcViewModel<ViewModel> {
+    
+    // MARK: Data Elements
+    
+    weak var vmDelegate: ViewModelDelegate?
+    
+    // MARK: Life-Cycle Methods
+    
+    override func updateDatas() {
+        super.updateDatas()
+        
+        vmDelegate?.updateViewAfterChangeData()
+    }
+    
+    // MARK: Public Methods
 
     public func setNewData(xmlList: [XMLIndexer]) {
         datas = xmlList.map { TalkItemViewModel(node: $0) }

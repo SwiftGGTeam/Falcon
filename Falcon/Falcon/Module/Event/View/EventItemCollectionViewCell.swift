@@ -22,19 +22,19 @@ class EventItemCollectionViewCell: FalcCollectionViewCell<EventItemCollectionVie
         imageView.cornerRadius = 5
         imageView.clipsToBounds = true
         
-        #if compiler(>=5.1)
-        if #available(iOS 13.0, *) {
-            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
-                if traitCollection.userInterfaceStyle == .dark {
-                    imageView.alpha = 0.9
-                } else {
-                    imageView.alpha = 1
-                }
-            })
-        } else {
-            imageView.alpha = 1
-        }
-        #endif
+//        #if compiler(>=5.1)
+//        if #available(iOS 13.0, *) {
+//            return UIColor.init(dynamicProvider: { (traitCollection) -> UIColor in
+//                if traitCollection.userInterfaceStyle == .dark {
+//                    imageView.alpha = 0.9
+//                } else {
+//                    imageView.alpha = 1
+//                }
+//            })
+//        } else {
+//            imageView.alpha = 1
+//        }
+//        #endif
         
         return imageView
     }()
